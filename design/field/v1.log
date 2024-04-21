@@ -1,0 +1,69 @@
+STEPからSolid Edgeに変換
+日付: 水曜日,4月 17,2024 10:53午後
+ソースファイル: C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\v1.stp
+作成者: Unknown
+会社名: Unknown
+ソースシステム: Solid Edge
+
+ハードウェア:
+プロセッサ: 11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz
+オペレーティングシステム: Windows 11 Version:23H2 Build:22631 System Type:64-bit
+インストールメモリ: 7.72 GB
+
+ソフトウェア情報
+Parasolidのバージョン: 35.0.149
+PSBodyShopのバージョン: 35.0.82
+ステップアダプタのバージョン: 11.0.82
+Solid Edgeのバージョン: 223.00.00.101 x64
+
+STEPのインポートオプション
+ファセットボディのインポート: オン
+チェックボディのインポート: オフ
+曲線のインポート: オン
+DoNotSaveのインポート: オン
+複数のボディを単一パーツファイルとしてインポート: オン
+ステッチ曲面のインポート: オン
+ブーリアンソリッドのインポート: オン
+ベースフィーチャにしたフィーチャ: オン
+単純化した幾何形状: オン
+インプリント曲線のインポート: オン
+ドライブのインポート: C:
+ステッチ曲面のインポート: オン
+曲面のインポート: オン
+出力パスのインポート: C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計
+有効なデフォルト出力パスのインポート: オン
+PMIをインポート: オフ
+内部構成要素としてインポート: オフ
+インポートパス: 
+
+Parasolidデータタイプに変換しています...
++アセンブリ「1」の開始
++Solid Edgeアセンブリファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\v1.asm」を作成しました。
+|--+Solid Edgeパーツファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\底d.par」を作成しました。
+|--+Solid Edgeパーツファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\外.par」を作成しました。
+|--+ファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\外.par」を再使用しています。
+|--+Solid Edgeパーツファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\スタート.par」を作成しました。
+|--+Solid Edgeパーツファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\スタート_0.par」を作成しました。
+|--+Solid Edgeパーツファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\エリア6.par」を作成しました。
+|--+ファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\エリア6.par」を再使用しています。
+|--+Solid Edgeパーツファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\エリ｢0B.par」を作成しました。
+|--+ファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\エリ｢0B.par」を再使用しています。
+|--+ファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\エリア6.par」を再使用しています。
+|--+ファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\エリア6.par」を再使用しています。
+|--+Solid Edgeパーツファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\id144.par」を作成しました。
+|--+ファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\id144.par」を再使用しています。
+|--+Solid Edgeパーツファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\青1.par」を作成しました。
+|--+Solid Edgeパーツファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\赤1.par」を作成しました。
+|--+Solid Edgeパーツファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\2.par」を作成しました。
+|--+ファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\2.par」を再使用しています。
+|--+Solid Edgeパーツファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\赤33.par」を作成しました。
+|--+Solid Edgeパーツファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\青33.par」を作成しました。
+|--+Solid Edgeパーツファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\カラー0.par」を作成しました。
+|--+Solid Edgeパーツファイル「C:\Users\hhhot\OneDrive\デスクトップ\舞鶴高専\sken\ロボコン2024\設計\ボッ5.par」を作成しました。
++パーツ総数: 35
++アセンブリ数: 0
++ソリッドボディ数: 35
++シートボディ数: 0
++アセンブリ「1」の終了
+変換処理は完了しました。
+変換と変換後の処理に要した時間:00 : 00 : 02
