@@ -10,15 +10,15 @@ void setup() {
 }
 void loop() {
   if(Left_1 = 1){
-    kakudo + 0.01f;
+    kakudo += 0.01;
     makitori.write(kakudo);}
   if(Right_1 = 1){
-    kakudo - 0.01f;
+    kakudo -= 0.01;
     makitori.write(kakudo);}
   if(Left_2 = 1){
-    kakudo2 + 0.01f;
+    kakudo2 += 0.01;
     agesage.write(kakudo2);}
   if(Right_2 = 1){
-    kakudo2 - 0.01f;
+    kakudo2 -= 0.01;
     agesage.write(kakudo2);}
 }
