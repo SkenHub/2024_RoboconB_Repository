@@ -8,7 +8,8 @@ class IM920(serial.Serial):
         self.TXDA = bytes("TXDA ","utf-8")
         self.ENDCH = bytes([0xA,0xD])
         self.tx_data = ""
-        self.rx_data = ""
+        self.rx_NN = 0
+        self.rx_data = []
         self.data = ""
 
     def write(self,data):
@@ -23,7 +24,21 @@ class IM920(serial.Serial):
             super().write(self.tx_data)
         super().write(self.ENDCH)
     
-    #def read(self):
+    def row_read(self,size):
+        return super().read(13+size*3-1)
+
+    def read(self,size,val):
+        self.rx_data = super().read(13+size*3-1)
+        self.rx_data = self.rx_data.decode(encoding='utf-8')
+        self.rx_NN = int(self.rx_data[3:7],16)
+        self.rx_data = self.rx_data[11:-2].replace(',','')
+        self.get_data = []
+        self.return_data = []
+        for i in range(len(self.rx_data)//2):
+            self.get_data.append(int(self.rx_data[i*2:(i*2)+2],16))
+        for i in range(size//4):
+            self.return_data.append(self.from_binary(bytes(self.get_data[i*4:(i+1)*4]),val))
+        return self.rx_NN,self.return_data
 
     def to_binary(self,val):
         #int、float型をバイナリー変換
@@ -49,7 +64,8 @@ if __name__ == "__main__":
     im920 = IM920("COM13")
     count = 0.5
     while True:
-        im920.write([count,count*(-1)])
+        #im920.write([count,count*(-1)])
         count += 0.03
-        #print(str(im920.read(2)))
-        time.sleep(0.5)
+        num,data = im920.read(8,float)
+        print(data)
+        #time.sleep(0.5)
