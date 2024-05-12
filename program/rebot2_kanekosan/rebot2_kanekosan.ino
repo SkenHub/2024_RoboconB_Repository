@@ -1,10 +1,11 @@
 #include <dummy.h>
 #include <Ps3Controller.h>
 #include <ESP32Servo.h>
+
+const int S1 = 2;//Servo1のピン番号を記入(Lトリガーで制御)
+const int S2 = 3;//Servo2のピン番号を記入(Rトリガーで制御)
 Servo servo1;
 Servo servo2;
-const int S1 = 2;
-const int S2 = 3;//ピン番号を記入
  uint8_t data[6];
  double Left_X,Left_Y,Right_X,Right_Y,Left_1,Left_2,Right_1,Right_2;
  ////////////////////////////////////////////////////////////////////////////////////////
@@ -21,18 +22,18 @@ const int S2 = 3;//ピン番号を記入
  int Left_Motor_P1 = 25;
  int Left_Motor_P2 = 26;
  int Left_Motor_PWM =A12;//2
-void servomt(){
-  if (Left_1 == 1) {
-    servo1.write(10);
-  } else if (Left_2 == 1) {
-    servo1.write(90);
-  }
-  if (Left_3 == 1) {
-    servo2.write(0);
-  } else if (Left_4 == 1) {
-    servo2.write(80);
-  }  
-}
+//void servomt(){
+//  if (Left_1 == 1) {
+//    servo1.write(10);
+// } else if (Left_2 == 1) {
+//    servo1.write(90);
+//  }
+//  if (Left_3 == 1) {
+//    servo2.write(0);
+//  } else if (Left_4 == 1) {
+//    servo2.write(80);
+//  }  これは何?
+//}
 
 void setup() {
   Serial.begin(115200);
@@ -147,7 +148,17 @@ void loop() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-  servomt();
+//Servo_move
+if( abs(Ps3.event.analog_changed.button.l2) ){
+  if(Ps3.data.analog.button.l2-75>0){//負の数をサーボに突っ込んだらめんどくさそうだから取り除く
+       servo1.write(Ps3.data.analog.button.l2-75); //Servo1をLトリガーの入力分回す(0~180°)
+  }
+}
+if( abs(Ps3.event.analog_changed.button.r2) ){
+  if(Ps3.data.analog.button.r2-75>0){//上に同じく、めんどくさそうなので取り除く
+       servo2.write(Ps3.data.analog.button.r2-75); //Servo2をRトリガーの入力分回す(0~180°)
+  }
+}
 ///////////////////////////////////////////////////////////////////////////////////////////
   if(Right_Motor_Output > 0)
   {
