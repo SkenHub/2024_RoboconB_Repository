@@ -3,10 +3,8 @@
 #include <ESP32Servo.h>
 
 const int S1 = 5;//Servo1のピン番号を記入(Lトリガーで制御)
-//const int S2 = 34;//Servo2のピン番号を記入(Rトリガーで制御)
-int ServoDeg = 0;//Servo角度制御用
+int ServoDeg = 0;//Servo角度制御用変数の初期化
 Servo servo;
-//Servo servo2;
  uint8_t data[6];
  double Left_X,Left_Y,Right_X,Right_Y,Left_1,Left_2,Right_1,Right_2;
  ////////////////////////////////////////////////////////////////////////////////////////
@@ -42,8 +40,6 @@ void setup() {
   Serial.begin(115200);
   Ps3.begin("e8:68:e7:31:03:5a");
   Serial.println("Ready");
-//  Ps3.attach(Joshiryo);//named by Taichi Kurozumi この関数はサーボ動作用
-
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -60,7 +56,6 @@ void setup() {
   ledcAttachPin(Right_Motor_PWM,0);
   ledcAttachPin(Left_Motor_PWM,1); 
       servo.attach(S1,510,2400);
-//      servo2.attach(S2,510,2400);
 }
 
 void loop() {
@@ -191,38 +186,22 @@ void loop() {
 //}
 
 
-//
-//void Joshiryo(){
 
 //Servo_move
-//if( abs(Ps3.event.analog_changed.button.l2) ){
-  if(Ps3.data.analog.button.l2-75>0){//負の数をサーボに突っ込んだらめんどくさそうだから取り除く
-if(ServoDeg != 180){
+  if(Ps3.data.button.l2 = 1 ){//Lトリガー検知
+if(ServoDeg != 180 ){
   ServoDeg = ServoDeg + 1;}
-       servo.write(ServoDeg); //Servo1をLトリガーの入力分回す(0~180°)。トリガーは0~255なため、75を引いて0~180にしている
-  }//else if(Ps3.data.analog.button.l2-75<0){
-   // servo1.write(0);
-  //}
-//}
-
-//   if( abs(Ps3.event.analog_changed.button.cross) ){//Cross!!
-  //     Serial.print("Pressing the cross button: ");
-    //   Serial.println(Ps3.data.analog.button.cross, DEC);
-      // servo1.write(Ps3.data.analog.button.cross);
-   //}
-
-//if( abs(Ps3.event.analog_changed.button.r2) ){
-  if(Ps3.data.analog.button.r2-75>0){//上に同じく、めんどくさそうなので取り除く
+       servo.write(ServoDeg); //ServoDeg度に回す
+  }
+  if(Ps3.data.button.r2 = 1){//Rトリガー検知
        if(ServoDeg != 0){
        ServoDeg = ServoDeg - 1;}
        servo.write(ServoDeg);
-       //servo2.write(Ps3.data.analog.button.r2-75); //Servo2をRトリガーの入力分回す(0~180°)
   }
-//}
 
-  Serial.print(Ps3.event.analog_changed.button.l2);//debug用にトリガーの出力をシリアルで垂れ流す
-  Serial.print("Left_TR_Servo_Output");
-  Serial.print(Ps3.event.analog_changed.button.r2);
-  Serial.print("Right_TR_Servo_Output");
+  Serial.print(Ps3.data.button.l2);//debug用にトリガーの出力をシリアルで垂れ流す
+  Serial.print(":L2TR");
+  Serial.print(Ps3.data.button.l2);
+  Serial.print(":R2TR");
   Serial.println();
 }
