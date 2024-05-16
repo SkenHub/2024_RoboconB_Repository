@@ -1,40 +1,29 @@
-#include <dummy.h>
+//#include <dummy.h>
 #include <Ps3Controller.h>
 #include <ESP32Servo.h>
-
-const int S1 = 5;//Servo1のピン番号を記入(Lトリガーで制御)
-int ServoDeg = 0;//Servo角度制御用変数の初期化
+//ピン番号にint型は贅沢かも?
+constexpr byte S1 = 5;//Servo1のピン番号を記入(Lトリガーで制御)
+byte ServoDeg = 0;//Servo角度制御用変数の初期化
+constexpr uint16_t ServoLimitDeg = 180;//Servo最大角
 Servo servo;
- uint8_t data[6];
- double Left_X,Left_Y,Right_X,Right_Y,Left_1,Left_2,Right_1,Right_2;
- ////////////////////////////////////////////////////////////////////////////////////////
+uint8_t data[6];
+float Left_X,Left_Y,Right_X,Right_Y,Left_1,Left_2,Right_1,Right_2;
+////////////////////////////////////////////////////////////////////////////////////////
+//doubleから変えてみる(もしかしたら治るかも?)
+float Right_Motor_Output = 0;//左モーター
+float Left_Motor_Output = 0;//右モーター
 
- double Right_Motor_Output = 0;//左モーター
- double Left_Motor_Output = 0;//右モーター
-
- ////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
  
- int Right_Motor_P1 = 12;
- int Right_Motor_P2 = 13;
- int Right_Motor_PWM =A10;//4
+constexpr byte Right_Motor_P1 = 12;
+constexpr byte Right_Motor_P2 = 13;
+constexpr int Right_Motor_PWM =A10;//4
 
- int Left_Motor_P1 = 25;
- int Left_Motor_P2 = 26;
- int Left_Motor_PWM =A12;//2
-//void servomt(){
-//  if (Left_1 == 1) {
-//    servo1.write(10);
-// } else if (Left_2 == 1) {
-//    servo1.write(90);
-//  }
-//  if (Left_3 == 1) {
-//    servo2.write(0);
-//  } else if (Left_4 == 1) {
-//    servo2.write(80);
-//  }  これは何?
-//}
+constexpr byte Left_Motor_P1 = 25;
+constexpr byte Left_Motor_P2 = 26;
+constexpr int Left_Motor_PWM =A12;//2
 
-
+//////
 
 void setup() {
   Serial.begin(115200);
@@ -45,20 +34,24 @@ void setup() {
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
+ESP32PWM::allocateTimer(1);//魔法の呪文(これを入れるとなんかタイマーが干渉しなくなっていい感じ♪)
+
+  servo.attach(S1,510,2400);
   pinMode(Right_Motor_P1,OUTPUT);
   pinMode(Right_Motor_P2,OUTPUT);
-  ledcSetup(0,12800,8);
+  ledcSetup(1,12800,8);
 
   pinMode(Left_Motor_P1,OUTPUT);
   pinMode(Left_Motor_P2,OUTPUT);
-  ledcSetup(1,12800,8);
+  ledcSetup(8,12800,8);
 
-  ledcAttachPin(Right_Motor_PWM,0);
-  ledcAttachPin(Left_Motor_PWM,1); 
-      servo.attach(S1,510,2400);
+  ledcAttachPin(Right_Motor_PWM,1);
+  ledcAttachPin(Left_Motor_PWM,8); 
 }
 
 void loop() {
+
+
   if (Ps3.isConnected()){
     /*Serial.print("LX=,");
     Serial.print(Ps3.data.analog.stick.lx);
@@ -150,6 +143,8 @@ void loop() {
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////
+
+
   if(Right_Motor_Output > 0)
   {
     digitalWrite(Right_Motor_P1,HIGH);
@@ -183,25 +178,28 @@ void loop() {
     digitalWrite(Left_Motor_P2,HIGH);
     ledcWrite(1,0);
   }
-//}
 
 
 
 //Servo_move
-  if(Ps3.data.button.l2 = 1 ){//Lトリガー検知
-if(ServoDeg != 180 ){
-  ServoDeg = ServoDeg + 1;}
-       servo.write(ServoDeg); //ServoDeg度に回す
-  }
-  if(Ps3.data.button.r2 = 1){//Rトリガー検知
+
+if(Ps3.data.button.l2 == 1 ){//Lトリガー検知
+   if(ServoDeg != ServoLimitDeg ){
+       ServoDeg = ServoDeg + 1;}
+      servo.write(ServoDeg); //ServoDeg度に回す
+    }
+
+if(Ps3.data.button.r2 == 1){//Rトリガー検知
        if(ServoDeg != 0){
        ServoDeg = ServoDeg - 1;}
        servo.write(ServoDeg);
   }
 
+
+
   Serial.print(Ps3.data.button.l2);//debug用にトリガーの出力をシリアルで垂れ流す
   Serial.print(":L2TR");
-  Serial.print(Ps3.data.button.l2);
+  Serial.print(Ps3.data.button.r2);
   Serial.print(":R2TR");
   Serial.println();
 }
