@@ -1,7 +1,5 @@
-//#include <dummy.h>
 #include <Ps3Controller.h>
 #include <ESP32Servo.h>
-//ピン番号にint型は贅沢かも?
 constexpr byte S1 = 5;//Servo1のピン番号を記入(Lトリガーで制御)
 byte ServoDeg = 0;//Servo角度制御用変数の初期化
 constexpr uint16_t ServoLimitDeg = 180;//Servo最大角
@@ -9,7 +7,7 @@ Servo servo;
 uint8_t data[6];
 float Left_X,Left_Y,Right_X,Right_Y,Left_1,Left_2,Right_1,Right_2;
 ////////////////////////////////////////////////////////////////////////////////////////
-//doubleから変えてみる(もしかしたら治るかも?)
+
 float Right_Motor_Output = 0;//左モーター
 float Left_Motor_Output = 0;//右モーター
 
