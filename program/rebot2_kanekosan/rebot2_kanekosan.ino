@@ -1,5 +1,7 @@
+//#include <dummy.h>
 #include <Ps3Controller.h>
 #include <ESP32Servo.h>
+
 constexpr byte S1 = 5;//Servo1のピン番号を記入(Lトリガーで制御)
 byte ServoDeg = 0;//Servo角度制御用変数の初期化
 constexpr uint16_t ServoLimitDeg = 180;//Servo最大角
@@ -12,14 +14,14 @@ float Right_Motor_Output = 0;//左モーター
 float Left_Motor_Output = 0;//右モーター
 
 ////////////////////////////////////////////////////////////////////////////////////////
- 
+
 constexpr byte Right_Motor_P1 = 12;
 constexpr byte Right_Motor_P2 = 13;
 constexpr int Right_Motor_PWM =A10;//4
 
-constexpr byte Left_Motor_P1 = 25;
-constexpr byte Left_Motor_P2 = 26;
-constexpr int Left_Motor_PWM =A12;//2
+constexpr byte Left_Motor_P1 = 32;
+constexpr byte Left_Motor_P2 = 33;
+constexpr int Left_Motor_PWM =A7;//36(VPって書いてるピン)//14//27//15//2//0//35
 
 //////
 
@@ -132,9 +134,9 @@ void loop() {
     }    
   }
 
-  Serial.print(" ");
+  Serial.print("Left:");
   Serial.print(Left_Motor_Output);
-  Serial.print(" ");
+  Serial.print("Right:");
   Serial.print(abs(Right_Motor_Output));
   Serial.println();
 
