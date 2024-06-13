@@ -1,3 +1,0 @@
-[console_scripts]
-calcu_node = CalcuPkg.calcu_node:main
-
