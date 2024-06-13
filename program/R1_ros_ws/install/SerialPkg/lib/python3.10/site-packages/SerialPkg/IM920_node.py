@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Int16MultiArray
-from  SerialPkg.SerialPkg import IM920sL
+from SerialPkg import IM920sL
 
 class IM920Node(Node):
     def __init__(self):
@@ -25,8 +25,8 @@ class IM920Node(Node):
     def make_send(self,msg):
         pass
 
-if __name__ == "__main__":
-    rclpy.init(args=None)
+def main(args = None):
+    rclpy.init(args=args)
 
     IM920_node = IM920Node()
 
@@ -34,3 +34,6 @@ if __name__ == "__main__":
 
     IM920_node.destroy_node()
     rclpy.shutdown()
+
+if __name__ == "__main__":
+    main()

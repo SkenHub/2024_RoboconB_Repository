@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float32MultiArray
-import my_serial as serial
+from SerialPkg import my_serial as serial
 
 class SerialNode(Node):
     def __init__(self):
@@ -48,8 +48,8 @@ class SerialNode(Node):
             self.tx_data[13] += self.tx_data[i]
         self.tx_data[13] = self.tx_data[13]&0xFF
 
-if __name__ == "__main__":
-    rclpy.init(args=None)
+def main(args = None):
+    rclpy.init(args=args)
 
     serial_node = SerialNode()
 
@@ -57,3 +57,6 @@ if __name__ == "__main__":
 
     serial_node.destroy_node()
     rclpy.shutdown()
+
+if __name__ == "__main__":
+    main()
