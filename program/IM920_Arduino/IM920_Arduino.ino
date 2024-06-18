@@ -1,37 +1,32 @@
 #include <SoftwareSerial.h> 
-#include "IM920_name.h"
+#include "IM920.h"
 
 SoftwareSerial IM920Serial(8, 9);  //受信 RX をピン 8、送信 TX をピン 9 に割り当て
 ConvertIntFloat convert;
-IM920COM im920;
-
-void IM920write(uint8_t* data,IM920Bytes bytes){
-  IM920Serial.print(im920.TXDA);
-  Serial.print(im920.TXDA);
-  String tx_data;
-  for(int i; i<bytes*8; i++){
-    tx_data = IM920Format(data[i]);
-    IM920Serial.print(tx_data);
-    Serial.print(data[i],HEX);
-  }
-  IM920Serial.print(im920.finish);
-  Serial.print(im920.finish);
-}
+IM920 im920(IM920Serial);
+uint8_t tx_data[8] = {0xFF,0,0,0,0,0xA0,0,0};
+uint8_t rx_data[8] = {0,0,0,0,0,0,0,0};
 
 void setup() {
-  IM920Serial.begin(19200);  //ソフトウェアシリアル開始IM920とは19200を指定
   Serial.begin(19200);
+  im920.init();
 }
 
 void loop() {
-  long int num[2] = {4687,4567};
-  uint8_t tx_data[8];
+  long int rx[2];
+  uint16_t NN;
+  im920.read(&NN,rx_data,Bytes8);
   for(int i=0; i<2; i++){
-    convert.int_val = num[i];
     for(int j=0; j<4; j++){
-      tx_data[i*4+j] = convert.uint8_val[j];
+      convert.uint8_val[j] = rx_data[i*4+j];
     }
+    rx[i] = convert.float_val;
   }
-  IM920write(tx_data,Bytes8);
-  delay(100);
+  for(int i=0; i<2; i++){
+    Serial.print(rx[i]);
+    Serial.print("  ");
+  }
+  Serial.println();
+  //im920.write(tx_data,Bytes8);
+  //delay(100);
 }

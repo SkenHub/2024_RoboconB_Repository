@@ -20,7 +20,7 @@ class IM920(serial.Serial):
         for i in range(len(data)):
             self.data = format(int.from_bytes(self.to_binary(data[i]),byteorder='big'),'x')
             self.tx_data = bytes(self.data.zfill(8),"utf-8")
-            print(self.tx_data)
+            #print(self.tx_data)
             super().write(self.tx_data)
         super().write(self.ENDCH)
     
@@ -61,11 +61,11 @@ class IM920(serial.Serial):
         return data
 
 if __name__ == "__main__":
-    im920 = IM920("COM13")
+    im920 = IM920("COM18")
     count = 0.5
     while True:
-        #im920.write([count,count*(-1)])
-        count += 0.03
-        num,data = im920.read(8,float)
-        print(data)
-        #time.sleep(0.5)
+        im920.write([count,count*(-1)])
+        count += 1.57
+        #num,data = im920.read(8,float)
+        print(count)
+        time.sleep(0.5)
