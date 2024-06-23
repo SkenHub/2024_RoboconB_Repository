@@ -24,10 +24,10 @@ uint8_t robot_cmd[2];
 OTOS mous;
 uint8_t mous_data[36];
 uint8_t robot_state[2];
-uint8_t STMdata[39];
+uint8_t STMdata[40];
+unsigned int check_sum;
 
-uint8_t num;
-int num2 = 200;
+uint8_t fst_byte = 0xA5;
 
 SkenMdd mdd;
 float mode[4] = {0,0,0,0};
@@ -58,7 +58,8 @@ void receive_set(){
 }
 
 void start_set(){
-	num = ROSdata[0]&0xF0;
+	fst_byte = ROSdata[0];
+	uint8_t num = fst_byte&0xA0;
 	if(num == 0xA0){
 		//初期設定
 		switch(ROSdata[0]&0x0F){
@@ -92,18 +93,25 @@ void MDD_control(){
 }
 
 void make_STMdata(){
-	STMdata[0] = ROSdata[0];
+	STMdata[0] = 0xA5;
 	for(int i=1; i<37; i++){
 		STMdata[i] = mous_data[i-1];
 	}
 	for(int i=0; i<2; i++){
 		STMdata[37+i] = robot_state[i];
 	}
+	STMdata[37] |= fst_byte<<4;
+	check_sum = 0;
+	for(int i=1;i<39;i++){
+		check_sum += STMdata[i];
+	}
+	STMdata[39] = check_sum & 0xFF;
 }
 
 void interrupt(){
 	mous.raw_data(mous_data);
 	make_STMdata();
+	serial.write(STMdata,40);
 
 	receive_set();
 	start_set();
@@ -113,13 +121,14 @@ void interrupt(){
 int main(void){
 	sken_system.init();
 
-	serial.init(C10,C11,SERIAL4,115200);
+	serial.init(C10,C11,SERIAL3,115200);
 	serial.startDmaRead(ROSdata,15);
 
 	mous.init(B6,B7,I2C_1);
 
 	sken_system.addTimerInterruptFunc(interrupt,0,1);
 
+	/*
 	mdd.init(A9,A10,SERIAL1);
 	mdd.tcp(MOTOR_COMMAND_MODE_SELECT,mode,10,2000);
 	mdd.tcp(M1_PID_GAIN_CONFIG,M1_gain,10,2000);
@@ -128,8 +137,9 @@ int main(void){
 	mdd.tcp(M4_PID_GAIN_CONFIG,M4_gain,10,2000);
 	mdd.tcp(ENCODER_RESOLUTION_CONFIG,encoder_parm,10,2000);
 	mdd.tcp(ROBOT_DIAMETER_CONFIG,diameter,10,2000);
+	*/
 
 	while(true){
-		serial.write(STMdata,39,20);
+
 	}
 }
