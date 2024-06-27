@@ -10,7 +10,7 @@ const int switch1 = 2;//PushなSWのピン番号
 const int switch2 = 3;
 const int switch3 = 4;
 const int switch4 = 5;
-const int switch5 = 6;4
+const int switch5 = 6;
 const int switch6 = 7;
 
 byte switchState1 = 0;//押されているか否かを定義
@@ -45,14 +45,14 @@ switchState5 = (digitalRead(switch5) == 1 ) ? 0 : 1;
 switchState6 = (digitalRead(switch6) == 1 ) ? 0 : 1;
 
 
-  if(switchState1 == 1){
+  if(switchState1 == 1){//全進B
     send_data = send_data | 0b00000011;
     Serial.print("up");
   }
-  if(switchState2 == 1){
+  if(switchState2 == 1){//右B
     send_data = send_data | 0b00000001;
   }
-  if(switchState3 == 1){
+  if(switchState3 == 1){//左B
     send_data = send_data | 0b00000010;
   }
 
@@ -61,28 +61,28 @@ switchState6 = (digitalRead(switch6) == 1 ) ? 0 : 1;
 
   if(switchState4 == 1){
 
-    if( switchState3 == 1){
+    if( switchState3 == 1){//後退+左B
       send_data = send_data | 0b00001010;
       Serial.print("Left");
 
     }else{
 
-      if(switchState2 == 1){
+      if(switchState2 == 1){//後退+右B
         send_data = send_data | 0b00000101;
         Serial.print("Right");
 
-      }else{
+      }else{//後退B
         send_data = send_data | 0b00001111;
         Serial.print("down");
 
       }
     }    
   }
-  if(switchState5 == 1){
+  if(switchState5 == 1){//Servo+
     send_data = send_data | 0b00100000;
     Serial.print("L");
   }else{
-    if(switchState6 == 1){
+    if(switchState6 == 1){//Servo-
       send_data = send_data | 0b00010000;
       Serial.print("R");
     }
@@ -92,7 +92,7 @@ switchState6 = (digitalRead(switch6) == 1 ) ? 0 : 1;
 Serial.println(send_data,HEX);
 
 //この辺は要調整
-uint8_t tx_data[8] = {0,0,0,0,0,0,0,send_data};
+uint8_t tx_data[8] = {send_data,send_data,send_data,send_data,send_data,send_data,send_data,send_data};
 //uint8_t tx_data[8] = {0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF};
 
 im920.write(tx_data,Bytes8);
