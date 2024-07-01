@@ -3,7 +3,7 @@
 
 SoftwareSerial IM920Serial(8, 9);  //受信 RX をピン 8、送信 TX をピン 9 に割り当て
 IM920 im920(IM920Serial);
-//uint8_t tx_data[8] = {0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF};
+uint8_t tx_data[8] = {0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF};
 
 /*
 const int switch1 = 2;//PushなSWのピン番号
@@ -38,7 +38,13 @@ void setup() {
 void loop() {
   switchState = 0;
   for(int i=0; i<8; i++) switchState |= ((digitalRead(sw[i]))? 0 : 1) << i;
-  Serial.println(switchState,BIN);
+  tx_data[0] = switchState;
+  for(int i=0; i<8; i++){
+    Serial.print(tx_data[i],HEX);
+    Serial.print(" ");
+  }
+  Serial.println();
+  im920.write(tx_data,Bytes8);
 /*
 byte send_data = 0b00000000;
 
