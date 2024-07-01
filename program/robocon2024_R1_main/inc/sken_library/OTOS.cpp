@@ -14,8 +14,8 @@ void OTOS::init(Pin scl,Pin sda,I2CSelect i2c,int drift_time){
 	reset();
 }
 
-void OTOS::get_odom(float* odom){
-	for(int i=0; i<18; i++){
+void OTOS::get_odom(float* odom,int odom_num){
+	for(int i=0; i<odom_num; i++){
 		i2c_.read(0x17,0x20+(i*2)  ,1,(uint8_t*)&data_[0],1);
 		i2c_.read(0x17,0x20+(i*2)+1,1,(uint8_t*)&data_[1],1);
 		Data_ = data_[1]<<8 | data_[0];
@@ -50,8 +50,8 @@ void OTOS::offset_odom(float x,float y,float deg){
 	}
 }
 
-void OTOS::raw_data(uint8_t* data){
-	for(int i=0; i<36; i++){
+void OTOS::raw_data(uint8_t* data,int odom_num){
+	for(int i=0; i<odom_num*2; i++){
 		i2c_.read(0x17,0x20+i,1,(uint8_t*)&data[i],1);
 	}
 }

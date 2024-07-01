@@ -20,10 +20,10 @@ class OTOS {
 public:
 	OTOS();
 	void init(Pin scl,Pin sda,I2CSelect i2c,int drift_time = 5000);
-	void get_odom(float* odom);
+	void get_odom(float* odom,int odom_num);
 	void set_odom(float x,float y,float deg);
 	void offset_odom(float x,float y,float deg);
-	void raw_data(uint8_t* data);
+	void raw_data(uint8_t* data,int odom_num);
 	void reset();
 };
 
