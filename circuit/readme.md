@@ -1,1 +1,25 @@
 # 回路系共有用フォルダー
+# 回路系のピン
+## コントローラ
+sw1:GPIO34  
+sw2:GPIO35  
+sw3:GPIO32  
+sw4:GPIO33  
+sw5:GPIO19  
+sw6:GPIO18  
+sw7:GPIO05  
+sw8:GPIO17  
+IM920RX:TX  
+IM920TX:RX  
+LED1:GPIO25  
+LED2:GPIO26
+LED3:GPIO27
+## 遠鶴探査機  
+SERVO1:D5  
+SERVO2:D6  
+M1IN1:A0  
+M1IN2:A1  
+M2IN1:A4  
+M2IN2:A5  
+IM920RX:D10
+IM920TX:D9 

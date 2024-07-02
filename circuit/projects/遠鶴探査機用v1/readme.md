@@ -1,0 +1,10 @@
+# 回路系のピン
+## 遠鶴探査機  
+SERVO1:D5  
+SERVO2:D6  
+M1IN1:A0  
+M1IN2:A1  
+M2IN1:A4  
+M2IN2:A5  
+IM920RX:D10
+IM920TX:D9  
