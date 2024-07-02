@@ -2,7 +2,7 @@
 #include <Servo.h>
 #include "IM920.h"
 
-SoftwareSerial IM920Serial(8,9);
+SoftwareSerial IM920Serial(9,10);
 ConvertIntFloat convert;
 IM920 im920(IM920Serial);
 
@@ -61,11 +61,11 @@ void loop() {
     R_Mtr += 125;
     L_Mtr -= 125;
   }
-/*
+
   Serial.print(R_Mtr);
   Serial.print(" ");
   Serial.println(L_Mtr);
-  */
+  
 
   analogWrite(Right_Motor_P1,(R_Mtr>0)?R_Mtr:0);
   analogWrite(Right_Motor_P2,(R_Mtr<0)?-1*R_Mtr:0);
@@ -81,7 +81,7 @@ void loop() {
     if(ServoDeg > 0.00){
       ServoDeg = ServoDeg - 0.07;}
   } 
-  Serial.println(ServoDeg);
+  //Serial.println(ServoDeg);
   servo.write(ServoDeg);
   
   /*
