@@ -1,0 +1,15 @@
+# 回路系のピン
+## コントローラ  
+sw1:GPIO34  
+sw2:GPIO35  
+sw3:GPIO32  
+sw4:GPIO33  
+sw5:GPIO19  
+sw6:GPIO18  
+sw7:GPIO05  
+sw8:GPIO17  
+IM920RX:TX  
+IM920TX:RX  
+LED1:GPIO25  
+LED2:GPIO26
+LED3:GPIO27

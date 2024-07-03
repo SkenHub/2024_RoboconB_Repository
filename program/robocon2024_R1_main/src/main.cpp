@@ -17,24 +17,31 @@
 ConvertIntFloat convert;
 
 Uart serial;
-uint8_t ROSdata[15];
+uint8_t ROSdata[15],rosdata[15];
 float ROSfdata[3];
 uint8_t robot_cmd[2];
 
+uint8_t robot_state[3], STMdata[42];
+
 OTOS mous;
 uint8_t mous_data[36];
-uint8_t robot_state[2];
-uint8_t STMdata[40];
+float MousData[9];
 unsigned int check_sum;
 
-uint8_t fst_byte = 0xA5;
+Encoder encoder[2];
+Encoder_data enc_data[2];
+
+Gpio limit[6];
+uint8_t limit_data[6];
+
+uint8_t fst_byte;
 
 SkenMdd mdd;
 float mode[4] = {0,0,0,0};
-float M1_gain[4] = {30,0,0,20};
-float M2_gain[4] = {30,0,0,20};
-float M3_gain[4] = {30,0,0,20};
-float M4_gain[4] = {30,0,0,20};
+float M1_gain[4] = {60,10,0,20};
+float M2_gain[4] = {60,10,0,20};
+float M3_gain[4] = {60,10,0,20};
+float M4_gain[4] = {60,10,0,20};
 float diameter[4] = {100,1200,0,0};
 float encoder_parm[4] = {8192,8192,8192,8192};
 float mecanum[4] = {0,0,0,0};
@@ -48,6 +55,13 @@ enum InitCase{
 };
 
 void receive_set(){
+	for(int i=0; i<15; i++){
+		fst_byte = rosdata[i]&0xA0;
+		if(fst_byte == 0xA0){
+			for(int j=0; j<15; j++) ROSdata[j] = rosdata[(i+j)%15];
+			break;
+		}
+	}
 	//受信データを処理
 	for(int i=0; i<3; i++){
 		for(int j=0; j<4; j++)	convert.uint8_val[j] = ROSdata[i*4+j+1];
@@ -58,77 +72,98 @@ void receive_set(){
 }
 
 void start_set(){
-	fst_byte = ROSdata[0];
-	uint8_t num = fst_byte&0xA0;
-	if(num == 0xA0){
-		//初期設定
-		switch(ROSdata[0]&0x0F){
-		case M1:
-			for(int i=0; i<3; i++) M1_gain[i] = ROSfdata[i];
-			break;
-		case M2:
-			for(int i=0; i<3; i++) M2_gain[i] = ROSfdata[i];
-			break;
-		case M3:
-			for(int i=0; i<3; i++) M3_gain[i] = ROSfdata[i];
-			break;
-		case M4:
-			for(int i=0; i<3; i++) M4_gain[i] = ROSfdata[i];
-			break;
-		case other:
-			diameter[0] = ROSfdata[0];
-			diameter[1] = ROSfdata[1];
-			for(int i=0; i<4; i++)	encoder_parm[i] = ROSfdata[2];
-			break;
-		}
+	//初期設定
+	switch(ROSdata[0]&0x0F){
+	case M1:
+		for(int i=0; i<3; i++) M1_gain[i] = ROSfdata[i];
+		mdd.tcp(M1_PID_GAIN_CONFIG,M1_gain,10,2000);
+		break;
+	case M2:
+		for(int i=0; i<3; i++) M2_gain[i] = ROSfdata[i];
+		mdd.tcp(M2_PID_GAIN_CONFIG,M2_gain,10,2000);
+		break;
+	case M3:
+		for(int i=0; i<3; i++) M3_gain[i] = ROSfdata[i];
+		mdd.tcp(M3_PID_GAIN_CONFIG,M3_gain,10,2000);
+		break;
+	case M4:
+		for(int i=0; i<3; i++) M4_gain[i] = ROSfdata[i];
+		mdd.tcp(M4_PID_GAIN_CONFIG,M4_gain,10,2000);
+		break;
+	case other:
+		diameter[0] = ROSfdata[0];
+		diameter[1] = ROSfdata[1];
+		for(int i=0; i<4; i++)	encoder_parm[i] = ROSfdata[2];
+		break;
 	}
 }
 
 void MDD_control(){
 	//足回り動作
-	if(ROSdata[0] == 0xA0){
-		for(int i=0; i<3; i++) mecanum[i] = ROSfdata[i];
-		mdd.udp(MECANUM_MODE,mecanum);
-	}
+	for(int i=0; i<3; i++) mecanum[i] = ROSfdata[i];
+	mdd.udp(MECANUM_MODE,mecanum);
+	if(ROSdata[13]&1) mdd.tcp(PID_RESET_COMMAND,mode,10,2000);
+}
+
+void sensor_set(){
+	encoder[0].interrupt(&enc_data[0]);
+	encoder[1].interrupt(&enc_data[1]);
+	limit_data = 0;
+	for(int i=0; i<6; i++) limit_data |= (limit[i].read()?0:1)<<i;
 }
 
 void make_STMdata(){
-	STMdata[0] = 0xA5;
-	for(int i=1; i<37; i++){
+	STMdata[0] = 0xA6;
+	for(int i=1; i<7; i++){
 		STMdata[i] = mous_data[i-1];
 	}
-	for(int i=0; i<2; i++){
-		STMdata[37+i] = robot_state[i];
+	STMdata[7] = ROSdata[0];
+	for(int i=8; i<11; i++){
+		STMdata[i] = 0;//robot_state[i];
 	}
-	STMdata[37] |= fst_byte<<4;
 	check_sum = 0;
-	for(int i=1;i<39;i++){
+	for(int i=1;i<11;i++){
 		check_sum += STMdata[i];
 	}
-	STMdata[39] = check_sum & 0xFF;
+	STMdata[11] = check_sum & 0xFF;
 }
 
 void interrupt(){
-	mous.raw_data(mous_data);
-	make_STMdata();
-	serial.write(STMdata,40);
-
 	receive_set();
-	start_set();
 	MDD_control();
+	sensor_set();
+	make_STMdata();
+	start_set();
+}
+
+void send_ros(){
+	serial.write(STMdata,12);
+	//MDD_control();
+}
+
+void OTOS_get(){
+	mous.raw_data(mous_data,3);
+	mous.get_odom(MousData,3);
 }
 
 int main(void){
 	sken_system.init();
 
 	serial.init(C10,C11,SERIAL3,115200);
-	serial.startDmaRead(ROSdata,15);
+	serial.startDmaRead(rosdata,15);
 
 	mous.init(B6,B7,I2C_1);
 
-	sken_system.addTimerInterruptFunc(interrupt,0,1);
+	encoder[0].init(A0,A1,TIMER5);
+	encoder[1].init(B3,A5,TIMER2);
 
-	/*
+	limit[0].init(A6,INPUT_PULLUP);
+	limit[1].init(A7,INPUT_PULLUP);
+	limit[2].init(A8,INPUT_PULLUP);
+	limit[3].init(A11,INPUT_PULLUP);
+	limit[4].init(B8,INPUT_PULLUP);
+	limit[5].init(B14,INPUT_PULLUP);
+
 	mdd.init(A9,A10,SERIAL1);
 	mdd.tcp(MOTOR_COMMAND_MODE_SELECT,mode,10,2000);
 	mdd.tcp(M1_PID_GAIN_CONFIG,M1_gain,10,2000);
@@ -137,9 +172,10 @@ int main(void){
 	mdd.tcp(M4_PID_GAIN_CONFIG,M4_gain,10,2000);
 	mdd.tcp(ENCODER_RESOLUTION_CONFIG,encoder_parm,10,2000);
 	mdd.tcp(ROBOT_DIAMETER_CONFIG,diameter,10,2000);
-	*/
 
-	while(true){
-
+	sken_system.addTimerInterruptFunc(interrupt,0,1);
+	sken_system.addTimerInterruptFunc(send_ros,1,5);
+	sken_system.addTimerInterruptFunc(OTOS_get,2,1);
+	while(true){;
 	}
 }
