@@ -1,5 +1,5 @@
 #include <SoftwareSerial.h> 
-#include "IM920b.h"
+#include "IM920.h"
 
 SoftwareSerial IM920Serial(8, 9);  //受信 RX をピン 8、送信 TX をピン 9 に割り当て
 IM920 im920(IM920Serial);
