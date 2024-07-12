@@ -11,7 +11,7 @@ uint8_t rx_data[8] = {0,0,0,0,0,0,0,0};
 
 constexpr byte S1 = 6;//Servo1のピン番号を記入
 constexpr byte S2 = 5;
-float ServoDeg = 0.00;//Servo角度制御用変数の初期化
+float ServoDeg = 180.00;//Servo角度制御用変数の初期化
 float servo_ht = 0.00;
 float ServoLimitDeg = 180.00;//Servo最大角
 Servo servo;
@@ -26,9 +26,7 @@ constexpr byte Left_Motor_P2 = A5;
 
 void setup() {
   Serial.begin(115200);
-
   //Serial.println("Hello");
-
   servo.attach(S1,510,2400);
   servo2.attach(S2,510,2400);
   im920.init();
@@ -37,7 +35,6 @@ void setup() {
   pinMode(Left_Motor_P1,OUTPUT);
   pinMode(Left_Motor_P2,OUTPUT);
 }
-
 
 void loop() {
 //IM920との通信
@@ -78,11 +75,9 @@ void loop() {
     servo_ht = 0.0;
     servo2.write(servo_ht);
   }
-  
-  Serial.print(R_Mtr);
-  Serial.print(" ");
-  Serial.println(L_Mtr);
-  
+//  Serial.print(R_Mtr);
+//  Serial.print(" ");
+//  Serial.println(L_Mtr);
   
   analogWrite(Right_Motor_P1,(R_Mtr>0)?R_Mtr:0);
   analogWrite(Right_Motor_P2,(R_Mtr<0)?-1*R_Mtr:0);
@@ -97,7 +92,6 @@ void loop() {
     if(ServoDeg > 0.00){
       ServoDeg = ServoDeg - 0.1;}
   } 
-  //Serial.println(ServoDeg);
+  Serial.println(ServoDeg);
   servo.write(int(ServoDeg));
-  
 }

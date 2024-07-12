@@ -44,7 +44,7 @@ bool IM920::read(uint16_t *rx_id, uint8_t *rx_data, IM920Bytes bytes){
   }
 }
 
-void IM920::write(uint8_t* tx_data,IM920Bytes bytes,int node_num = 0x0000){
+void IM920::write(uint8_t* tx_data,IM920Bytes bytes,int node_num){
   //serial_.print("TXDA ");
   //serial_.print("1234");
   //serial_.print(finish_char_);

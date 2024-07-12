@@ -31,7 +31,7 @@ class IM920{
 	char TxData_[16];
   const char finish_char_[2] = {0xA,0xD};
 public:
-  IM920(SoftwareSerial& serial);
+  IM920(SoftwareSerial & serial);
   void init();
   bool read(uint16_t* rx_id,uint8_t* rx_data,IM920Bytes bytes);
 	void write(uint8_t* tx_data,IM920Bytes bytes,int node_num = 0x0000);
