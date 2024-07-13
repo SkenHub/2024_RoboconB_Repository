@@ -5,10 +5,10 @@ buttonPin1 = 35;
 buttonPin2 = 26;
 buttonPin3 = 33;
 buttonPin4 = 25;
-buttonPin5 = 4;
-buttonPin6 = 2;
-buttonPin7 = 0;
-buttonPin8 = 15;
+buttonPin5 = 15;
+buttonPin6 = 0;
+buttonPin7 = 2;
+buttonPin8 = 4;
 buttonPin9 = 34;
 buttonPin10 = 32; 
 IM920RX:TX  
