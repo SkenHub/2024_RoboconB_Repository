@@ -31,6 +31,9 @@ Gpio sw;
 
 Encoder encoder[2];
 Encoder_data enc_data[2];
+float enc_deg;
+int16_t enc_deg_bit;
+float measu_param[2] = {30,800};
 
 Gpio limit[6];
 uint8_t limit_data;
@@ -117,13 +120,17 @@ void sensor_set(){
 	encoder[1].interrupt(&enc_data[1]);
 	robot_state[0] = 0;
 	for(int i=0; i<6; i++) robot_state[0] |= (limit[i].read()?1:0)<<i;
+	enc_deg = (enc_data[0].distance-enc_data[1].distance)/(measu_param[1]/2.0) * (360.0/(2.0*PI));
+	enc_deg_bit = enc_deg/0.0055;
 }
 
 void make_STMdata(){
 	STMdata[0] = 0xA6;
-	for(int i=1; i<7; i++){
+	for(int i=1; i<5; i++){
 		STMdata[i] = mous_data[i-1];
 	}
+	STMdata[5] =  enc_deg_bit     & 0xFF;
+	STMdata[6] = (enc_deg_bit>>8) & 0xFF;
 	STMdata[7] = ROSdata[0];
 	for(int i=8; i<11; i++){
 		STMdata[i] = robot_state[i-8];
@@ -163,8 +170,8 @@ int main(void){
 	mous.init(B6,B7,I2C_1);
 	sw.init(C13,INPUT_PULLUP);
 
-	encoder[0].init(A0,A1,TIMER5);
-	encoder[1].init(B3,A5,TIMER2);
+	encoder[0].init(A0,A1,TIMER5,measu_param[0]);
+	encoder[1].init(B3,A5,TIMER2,measu_param[0]);
 
 	limit[0].init(B8,INPUT_PULLUP);
 	limit[1].init(B9,INPUT_PULLUP);
