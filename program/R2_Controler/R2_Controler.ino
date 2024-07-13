@@ -1,4 +1,4 @@
-#include <SoftwareSerial.h> 
+#include <SoftwareSerial.h>
 #include "IM920.h"
 
 SoftwareSerial IM920Serial(8,9);  //受信 RX をピン 8、送信 TX をピン 9 に割り当て
@@ -32,7 +32,6 @@ void setup() {
   }
   Serial.begin(19200);
   im920.init();
-  
 }
 
 void loop() {

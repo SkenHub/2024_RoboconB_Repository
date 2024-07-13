@@ -1,18 +1,20 @@
 # 回路系共有用フォルダー
 # 回路系のピン
 ## コントローラ
-sw1:GPIO34  
-sw2:GPIO35  
-sw3:GPIO32  
-sw4:GPIO33  
-sw5:GPIO19  
-sw6:GPIO18  
-sw7:GPIO05  
-sw8:GPIO17  
+buttonPin1 = 33; 
+buttonPin2 = 25;
+buttonPin3 = 35;
+buttonPin4 = 26;
+buttonPin5 = 4;
+buttonPin6 = 2;
+buttonPin7 = 4;
+buttonPin8 = 15;
+buttonPin9 = 34;
+buttonPin10 = 32; 
 IM920RX:TX  
 IM920TX:RX  
-LED1:GPIO25  
-LED2:GPIO26
+LED1:GPIO13
+LED2:GPIO14
 LED3:GPIO27
 ## 遠鶴探査機  
 SERVO1:D5  
