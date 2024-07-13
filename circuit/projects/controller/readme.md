@@ -1,6 +1,5 @@
-# 回路系共有用フォルダー
 # 回路系のピン
-## コントローラ
+## コントローラ  
 buttonPin1 = 35; 
 buttonPin2 = 26;
 buttonPin3 = 33;
@@ -16,12 +15,4 @@ IM920TX:RX
 LED1:GPIO13
 LED2:GPIO14
 LED3:GPIO27
-## 遠鶴探査機  
-SERVO1:D5  
-SERVO2:D6  
-M1IN1:A0  
-M1IN2:A1  
-M2IN1:A4  
-M2IN2:A5  
-IM920RX:D10
-IM920TX:D9 
+# 過去のコントローラ基板のデータはcontroller-backupsの中にzipファイル形式であります．
