@@ -15,4 +15,5 @@ IM920TX:RX
 LED1:GPIO13
 LED2:GPIO14
 LED3:GPIO27
+const int sw[10] = {35,26,33,25,15,0,2,4,34,32}; 
 # 過去のコントローラ基板のデータはcontroller-backupsの中にzipファイル形式であります．
