@@ -1092,10 +1092,6 @@
     (stroke (width 0) (type default))
     (uuid 02d731ba-0496-4d95-ba7c-a962ffabbb4e)
   )
-  (wire (pts (xy 127 97.8755) (xy 125.73 97.8755))
-    (stroke (width 0) (type default))
-    (uuid 059d5403-2379-4937-94ba-8d77b529118b)
-  )
   (wire (pts (xy 95.25 167.64) (xy 90.3116 167.64))
     (stroke (width 0) (type default))
     (uuid 099e33f4-00af-431a-8bcf-b992545f3d11)
@@ -1244,17 +1240,13 @@
     (stroke (width 0) (type default))
     (uuid 5b3c536a-d6b4-47ee-9afa-b8e7be26fc64)
   )
-  (wire (pts (xy 128.27 63.5) (xy 128.27 60.96))
+  (wire (pts (xy 128.27 60.96) (xy 128.27 63.5))
     (stroke (width 0) (type default))
     (uuid 5c2f9cd3-c26f-423b-8a98-cfd29481d6d5)
   )
   (wire (pts (xy 124.46 110.49) (xy 125.73 110.49))
     (stroke (width 0) (type default))
     (uuid 5dd3d98f-042f-4884-9aa7-0ee821bc6898)
-  )
-  (wire (pts (xy 125.73 100.4304) (xy 125.73 100.33))
-    (stroke (width 0) (type default))
-    (uuid 5fab552b-490e-43f9-a964-5b82ecfd4422)
   )
   (wire (pts (xy 20.32 177.8) (xy 20.32 179.07))
     (stroke (width 0) (type default))
@@ -1275,6 +1267,10 @@
   (wire (pts (xy 128.27 48.26) (xy 128.27 50.8))
     (stroke (width 0) (type default))
     (uuid 6a5b3cc8-5012-44b1-8600-448f80804ca7)
+  )
+  (wire (pts (xy 128.27 63.5) (xy 128.27 66.04))
+    (stroke (width 0) (type default))
+    (uuid 6b796f16-61bc-4a56-b953-7ebf32510072)
   )
   (wire (pts (xy 22.86 60.96) (xy 22.86 64.77))
     (stroke (width 0) (type default))
@@ -1308,10 +1304,6 @@
     (stroke (width 0) (type default))
     (uuid 80ad7223-f955-4590-bdfe-e6c692cd6341)
   )
-  (wire (pts (xy 127.4781 100.4304) (xy 125.73 100.4304))
-    (stroke (width 0) (type default))
-    (uuid 839de0a4-4875-4cab-a7e7-1a7c6f0a68c8)
-  )
   (wire (pts (xy 238.76 137.16) (xy 238.76 134.62))
     (stroke (width 0) (type default))
     (uuid 897caa43-d774-4bc2-b340-71ae3da7121d)
@@ -1332,6 +1324,10 @@
     (stroke (width 0) (type default))
     (uuid 91484a70-6bfd-4982-b940-87375ae56678)
   )
+  (wire (pts (xy 128.27 66.04) (xy 128.2173 66.04))
+    (stroke (width 0) (type default))
+    (uuid 92e1d39e-d528-404d-91aa-54b885830447)
+  )
   (wire (pts (xy 20.32 156.21) (xy 20.32 160.02))
     (stroke (width 0) (type default))
     (uuid 937fb1ca-9367-4e66-8eda-0132c59ecf60)
@@ -1347,6 +1343,10 @@
   (wire (pts (xy 40.64 148.59) (xy 40.64 146.05))
     (stroke (width 0) (type default))
     (uuid a3cf27d9-58a4-428c-8ff7-840d1ac2f5f4)
+  )
+  (wire (pts (xy 236.22 190.5) (xy 236.22 187.96))
+    (stroke (width 0) (type default))
+    (uuid a412a6ed-ef61-494a-94c3-c72952b3b361)
   )
   (wire (pts (xy 20.32 134.62) (xy 20.32 138.43))
     (stroke (width 0) (type default))
@@ -1376,10 +1376,6 @@
     (stroke (width 0) (type default))
     (uuid ba481946-7fda-40c3-b0d0-14b26135ebe5)
   )
-  (wire (pts (xy 125.73 102.87) (xy 146.05 102.87))
-    (stroke (width 0) (type default))
-    (uuid bd119722-dc4a-4314-af50-8d0f4ecc7ee0)
-  )
   (wire (pts (xy 99.06 58.42) (xy 96.52 58.42))
     (stroke (width 0) (type default))
     (uuid c168abcf-975e-4788-b8a2-e12da2383cf9)
@@ -1391,10 +1387,6 @@
   (wire (pts (xy 236.22 25.4) (xy 236.22 22.86))
     (stroke (width 0) (type default))
     (uuid c4a272ed-feee-4202-b9e4-50091ec8de68)
-  )
-  (wire (pts (xy 125.73 97.8755) (xy 125.73 97.79))
-    (stroke (width 0) (type default))
-    (uuid c51a1fe5-d291-4cf6-ae10-24e986dc3803)
   )
   (wire (pts (xy 128.27 45.72) (xy 128.27 48.26))
     (stroke (width 0) (type default))
@@ -1436,6 +1428,10 @@
     (stroke (width 0) (type default))
     (uuid d4456533-134c-4b40-9591-cf4b14a10565)
   )
+  (wire (pts (xy 128.2173 66.04) (xy 128.2173 66.0559))
+    (stroke (width 0) (type default))
+    (uuid d794859d-748a-4fa1-8e7a-584d7be580bd)
+  )
   (wire (pts (xy 236.22 170.18) (xy 236.22 167.64))
     (stroke (width 0) (type default))
     (uuid d8c36b10-dab8-4aab-b9a5-ec5669e03460)
@@ -1444,13 +1440,13 @@
     (stroke (width 0) (type default))
     (uuid da7ca8cd-2d04-4cdf-a6d3-ea8713efab36)
   )
-  (wire (pts (xy 125.73 105.41) (xy 146.05 105.41))
-    (stroke (width 0) (type default))
-    (uuid db5c5178-4d7f-4b44-8114-a6d1660b78ea)
-  )
   (wire (pts (xy 73.66 186.69) (xy 73.66 187.96))
     (stroke (width 0) (type default))
     (uuid df4d4dbd-de66-4256-bfe1-ba0dff6f1027)
+  )
+  (wire (pts (xy 251.46 185.42) (xy 246.38 185.42))
+    (stroke (width 0) (type default))
+    (uuid f3238cee-05ce-490f-b29b-829810a7c210)
   )
   (wire (pts (xy 20.32 146.05) (xy 20.32 148.59))
     (stroke (width 0) (type default))
@@ -1494,10 +1490,10 @@
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
-  (global_label "sw8" (shape input) (at 125.73 125.73 0) (fields_autoplaced)
+  (global_label "sw8" (shape input) (at 125.73 113.03 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 23dbc567-c4ac-4b0d-ba7e-a98ed2fe7c9a)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 132.2039 125.73 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 132.2039 113.03 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
@@ -1543,10 +1539,17 @@
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
-  (global_label "IM920RX" (shape input) (at 146.05 102.87 0) (fields_autoplaced)
+  (global_label "IM920RX" (shape input) (at 125.73 97.79 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 537a5763-cf28-4288-aca2-0d3d9c154397)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 157.12 102.87 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 136.8 97.79 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+  )
+  (global_label "sw11" (shape input) (at 125.73 107.95 0) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid 5a01b34a-b1c7-4508-bfb6-ff3ba6785b1e)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 133.4134 107.95 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
@@ -1557,10 +1560,10 @@
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
-  (global_label "IM920TX" (shape input) (at 146.05 105.41 0) (fields_autoplaced)
+  (global_label "IM920TX" (shape input) (at 125.73 100.33 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 674c0847-9d0e-4c91-805c-b8463d472f4f)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 156.8176 105.41 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 136.4976 100.33 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
@@ -1627,13 +1630,6 @@
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
-  (global_label "BUSY" (shape input) (at 127.4781 100.4304 0) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify left))
-    (uuid 862f92b1-2267-4227-8c0a-010ac4b4326b)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 135.2825 100.4304 0)
-      (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-  )
   (global_label "sw9" (shape input) (at 72.39 105.41 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 881bddfc-2b93-4c9f-972f-d5880ac1cbf8)
@@ -1662,6 +1658,13 @@
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
+  (global_label "sw11" (shape input) (at 135.8373 66.0559 0) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid 9a978f1c-1346-4661-ad74-ebb54bf18daa)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 143.5207 66.0559 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+  )
   (global_label "sw3" (shape input) (at 72.39 113.03 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 9d6ffe9c-9226-45a3-be61-8e119c469b72)
@@ -1669,10 +1672,10 @@
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
-  (global_label "sw7" (shape input) (at 125.73 130.81 0) (fields_autoplaced)
+  (global_label "sw7" (shape input) (at 125.73 118.11 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 9fd464ee-eb98-4003-bd34-030675204796)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 132.2039 130.81 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 132.2039 118.11 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
@@ -1711,10 +1714,17 @@
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
-  (global_label "sw6" (shape input) (at 125.73 128.27 0) (fields_autoplaced)
+  (global_label "sw6" (shape input) (at 125.73 115.57 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid b56fd430-4919-4c51-83b1-1ce015b7af03)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 132.2039 128.27 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 132.2039 115.57 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+  )
+  (global_label "sw11" (shape input) (at 251.46 185.42 0) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid b6ba1890-7e05-4415-a4b2-37d427fcaaf5)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 259.1434 185.42 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
@@ -1750,13 +1760,6 @@
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid cbe4235d-058a-4d88-9412-2ec84266eae5)
     (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 257.9339 114.3 0)
-      (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-  )
-  (global_label "RESET" (shape input) (at 127 97.8755 0) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify left))
-    (uuid cd1397aa-9785-4efc-accc-c5333719371a)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 135.6509 97.8755 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
@@ -1816,10 +1819,10 @@
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
-  (global_label "sw5" (shape input) (at 125.73 133.35 0) (fields_autoplaced)
+  (global_label "sw5" (shape input) (at 125.73 120.65 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid f1375e2a-ce5b-4ca5-b2d1-b8f004f85817)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 132.2039 133.35 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 132.2039 120.65 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
@@ -1872,7 +1875,7 @@
           (reference "U1") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "U1") (unit 1)
         )
@@ -1900,9 +1903,9 @@
     (pin "11" (uuid 07014f57-54ea-49ff-90a0-1d43acce1b12))
     (pin "12" (uuid dd27ecbb-8c2e-4662-9c29-b86535ab4eca))
     (pin "13" (uuid 370ec763-a49c-45e1-8ad5-a37614db28b6))
-    (pin "14" (uuid 44b06f95-4231-45a6-a727-6b154bb96d9b))
-    (pin "14" (uuid 44b06f95-4231-45a6-a727-6b154bb96d9b))
-    (pin "14" (uuid 44b06f95-4231-45a6-a727-6b154bb96d9b))
+    (pin "14" (uuid 44b06f95-4231-45a6-a727-6b154bb96da7))
+    (pin "14" (uuid 44b06f95-4231-45a6-a727-6b154bb96da7))
+    (pin "14" (uuid 44b06f95-4231-45a6-a727-6b154bb96da7))
     (pin "15" (uuid f911664e-291e-4d6a-b8c7-c85e995c7ea7))
     (pin "16" (uuid f8267838-b25e-4e29-b1f0-3f4d14cd357c))
     (pin "17" (uuid d7757138-42f3-4fe4-8967-57146f62bda1))
@@ -1934,9 +1937,34 @@
     (pin "8" (uuid 7aa6a664-8f03-4427-88b2-bf44f1cc8b1d))
     (pin "9" (uuid b9577a37-d5b1-4e19-b075-c4c9d552ea4c))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "U2") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GND") (at 236.22 190.5 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 024b6623-b00c-41f1-8d42-b46726926de1)
+    (property "Reference" "#PWR044" (at 236.22 196.85 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 236.22 195.58 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 236.22 190.5 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 236.22 190.5 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 5853c558-ae34-4607-b176-41aaeed22cd8))
+    (instances
+      (project "controllerv6"
+        (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
+          (reference "#PWR044") (unit 1)
         )
       )
     )
@@ -1951,7 +1979,7 @@
     (property "Value" "10μ" (at 57.15 184.785 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" (at 54.3052 186.69 0)
+    (property "Footprint" "Capacitor_THT:CP_Radial_Tantal_D6.0mm_P2.50mm" (at 54.3052 186.69 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 53.34 182.88 0)
@@ -1965,7 +1993,7 @@
           (reference "C5") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "C4") (unit 1)
         )
@@ -1995,7 +2023,7 @@
           (reference "#PWR026") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR025") (unit 1)
         )
@@ -2020,7 +2048,7 @@
     )
     (pin "1" (uuid 14b878e5-2908-45d8-958d-67d2d6432c91))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR040") (unit 1)
         )
@@ -2050,7 +2078,7 @@
           (reference "#PWR014") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR024") (unit 1)
         )
@@ -2058,25 +2086,25 @@
     )
   )
 
-  (symbol (lib_id "Connector_Generic:Conn_01x02") (at 132.08 20.32 0) (unit 1)
+  (symbol (lib_id "Connector_Generic:Conn_01x02") (at 127 25.4 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1b2a3d30-cb5b-4215-9b5d-fb5ff8bdc932)
-    (property "Reference" "J1" (at 134.62 20.955 0)
-      (effects (font (size 1.27 1.27)) (justify left))
+    (property "Reference" "J1" (at 127 17.78 0)
+      (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "Conn_01x02" (at 134.62 23.495 0)
-      (effects (font (size 1.27 1.27)) (justify left))
+    (property "Value" "Conn_01x02" (at 127 20.32 0)
+      (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Connector_AMASS:AMASS_XT30PW-M_1x02_P2.50mm_Horizontal" (at 132.08 20.32 0)
+    (property "Footprint" "Connector_AMASS:AMASS_XT30PW-F_1x02_P2.50mm_Horizontal" (at 127 25.4 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 132.08 20.32 0)
+    (property "Datasheet" "~" (at 127 25.4 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid b35ad8a3-1ad4-406d-8d69-d3b7daebb162))
     (pin "2" (uuid 974a10af-8d9a-49a0-9684-6f3a70a9495e))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "J1") (unit 1)
         )
@@ -2107,7 +2135,7 @@
           (reference "D3") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "D7") (unit 1)
         )
@@ -2133,7 +2161,7 @@
     (pin "1" (uuid e93ac46b-4aef-480d-84b1-78d644c5860e))
     (pin "2" (uuid ed5db30c-3a86-4ec0-acd7-d58c19ae670c))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "R5") (unit 1)
         )
@@ -2163,7 +2191,7 @@
           (reference "#PWR017") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR018") (unit 1)
         )
@@ -2189,7 +2217,7 @@
     (pin "1" (uuid 99a18ef8-4668-4993-a460-ed152b4e811f))
     (pin "2" (uuid 3fab7bbe-13c1-45c4-ae09-649b91b4e105))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "R11") (unit 1)
         )
@@ -2219,7 +2247,7 @@
           (reference "#PWR03") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR027") (unit 1)
         )
@@ -2245,7 +2273,7 @@
     (pin "1" (uuid 20af62b8-0289-4d92-b60b-0b62c5d0f53e))
     (pin "2" (uuid 2883d16a-59ef-4374-a54c-07aa1af41135))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "R17") (unit 1)
         )
@@ -2262,7 +2290,7 @@
     (property "Value" "10μ" (at 67.31 184.785 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" (at 64.4652 186.69 0)
+    (property "Footprint" "Capacitor_THT:CP_Radial_Tantal_D6.0mm_P2.50mm" (at 64.4652 186.69 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 63.5 182.88 0)
@@ -2276,7 +2304,7 @@
           (reference "C4") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "C5") (unit 1)
         )
@@ -2301,7 +2329,7 @@
     )
     (pin "1" (uuid ad35005c-517e-4c76-bd4b-c48f679d58fa))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR038") (unit 1)
         )
@@ -2327,7 +2355,7 @@
     (pin "1" (uuid 85740e84-3cfc-4875-b4c2-696028451b7a))
     (pin "2" (uuid 6be08bda-9c95-4e1e-91c7-5fa16ad88110))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "R18") (unit 1)
         )
@@ -2352,7 +2380,7 @@
     )
     (pin "1" (uuid 39adb36f-b4e0-44cf-bd9e-9224acb323d5))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR021") (unit 1)
         )
@@ -2383,7 +2411,7 @@
           (reference "D1") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "D1") (unit 1)
         )
@@ -2408,7 +2436,7 @@
     )
     (pin "1" (uuid 57013167-a53a-47e8-a2a1-ec543052db21))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR022") (unit 1)
         )
@@ -2438,7 +2466,7 @@
           (reference "#PWR010") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR09") (unit 1)
         )
@@ -2463,7 +2491,7 @@
     )
     (pin "1" (uuid 6b4b7139-7dc1-4d9a-9868-32506e06d4b9))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR043") (unit 1)
         )
@@ -2494,7 +2522,7 @@
           (reference "C3") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "C6") (unit 1)
         )
@@ -2525,7 +2553,7 @@
           (reference "R3") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "R7") (unit 1)
         )
@@ -2551,7 +2579,7 @@
     (pin "1" (uuid f528b208-5bd6-40b8-afb0-a6f699b59060))
     (pin "2" (uuid 73ba2be4-77e1-4110-a0be-6a1e6ae97411))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "R12") (unit 1)
         )
@@ -2577,7 +2605,7 @@
     (pin "1" (uuid d50fa54d-ef04-4577-b326-df82073945b6))
     (pin "2" (uuid ef2db754-95e9-48de-8359-213a8f4f106b))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "R16") (unit 1)
         )
@@ -2603,7 +2631,7 @@
     (pin "1" (uuid 10678913-e69e-47c1-aa1a-c36c2bf90533))
     (pin "2" (uuid f7a09fdc-07aa-4d72-82c9-5871fe932099))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "R6") (unit 1)
         )
@@ -2629,7 +2657,7 @@
     (pin "1" (uuid 2dc48a01-3d47-423c-a754-1d9b71fa543c))
     (pin "2" (uuid 9a9f3950-f662-4abf-8ab8-f31066e2e6ef))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "R8") (unit 1)
         )
@@ -2660,7 +2688,7 @@
           (reference "D1") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "D2") (unit 1)
         )
@@ -2690,7 +2718,7 @@
           (reference "#PWR012") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR011") (unit 1)
         )
@@ -2716,7 +2744,7 @@
     (pin "1" (uuid 864aa1fd-6cb8-4447-93a9-f4754bccfca6))
     (pin "2" (uuid 25211334-dbaa-4a4d-a9f6-930f55817147))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "R14") (unit 1)
         )
@@ -2746,7 +2774,7 @@
           (reference "#PWR04") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR07") (unit 1)
         )
@@ -2772,7 +2800,7 @@
     (pin "1" (uuid a2032fd3-85ef-4be6-a196-8e0706c0585a))
     (pin "2" (uuid 4c55c561-da1c-475e-9804-da44a530e5eb))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "SW5") (unit 1)
         )
@@ -2798,7 +2826,7 @@
     (pin "1" (uuid 4548a112-727e-45b5-9e46-e5f72e5c8364))
     (pin "2" (uuid c23dcdff-4ae7-47a5-959b-a01e2883a57b))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "R15") (unit 1)
         )
@@ -2827,7 +2855,7 @@
           (reference "H4") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "H4") (unit 1)
         )
@@ -2862,7 +2890,7 @@
           (reference "#PWR04") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR02") (unit 1)
         )
@@ -2876,7 +2904,7 @@
     (property "Reference" "C1" (at 44.45 182.245 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "10μ" (at 44.45 184.785 0)
+    (property "Value" "0.1μ" (at 44.45 184.785 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" (at 41.6052 186.69 0)
@@ -2893,7 +2921,7 @@
           (reference "C1") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "C3") (unit 1)
         )
@@ -2919,7 +2947,7 @@
     (pin "1" (uuid c64103a4-b8e4-4d10-b449-dc2c79462c2f))
     (pin "2" (uuid 30fa981c-2611-47d8-991d-d422cd34fe51))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "SW9") (unit 1)
         )
@@ -2949,7 +2977,7 @@
           (reference "#PWR011") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR08") (unit 1)
         )
@@ -2974,7 +3002,7 @@
     )
     (pin "1" (uuid c7d2fd38-71f8-470d-92d3-cfbf5c16abf2))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR035") (unit 1)
         )
@@ -3006,7 +3034,7 @@
           (reference "U2") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "U3") (unit 1)
         )
@@ -3032,7 +3060,7 @@
     (pin "1" (uuid 2f501390-182f-4f43-8312-92e1d1149009))
     (pin "2" (uuid 1d419320-7672-4244-b4a3-72b004c02fd8))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "R13") (unit 1)
         )
@@ -3061,7 +3089,7 @@
           (reference "H3") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "H3") (unit 1)
         )
@@ -3095,7 +3123,7 @@
           (reference "H1") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "H1") (unit 1)
         )
@@ -3126,7 +3154,7 @@
     (pin "1" (uuid 5ae1cedd-3423-4802-bb19-4802a0487b4f))
     (pin "2" (uuid a1ce6b61-2610-41de-bba3-842f0f978bc0))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "SW1") (unit 1)
         )
@@ -3163,7 +3191,7 @@
           (reference "D4") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "D9") (unit 1)
         )
@@ -3193,7 +3221,7 @@
           (reference "#PWR04") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR04") (unit 1)
         )
@@ -3219,7 +3247,7 @@
     (pin "1" (uuid 7ed0a272-d53a-45ad-ad07-d7783ba1f901))
     (pin "2" (uuid b3eecb04-e3d9-424f-b6ef-76e745e3ab44))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "SW10") (unit 1)
         )
@@ -3245,7 +3273,7 @@
     (pin "1" (uuid fbd8d205-89e9-4e58-b6c8-033e0251faf8))
     (pin "2" (uuid b93125a5-4476-4c4b-99f0-f3d08f8639c5))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "SW6") (unit 1)
         )
@@ -3275,7 +3303,7 @@
           (reference "#PWR028") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR01") (unit 1)
         )
@@ -3300,7 +3328,7 @@
     )
     (pin "1" (uuid 6d3ed4f3-d934-4ee1-8198-66c288fa64f8))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR029") (unit 1)
         )
@@ -3331,7 +3359,7 @@
           (reference "R1") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "R1") (unit 1)
         )
@@ -3356,7 +3384,7 @@
     )
     (pin "1" (uuid eef2c93f-e32c-453b-a41d-45ed9e160729))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR014") (unit 1)
         )
@@ -3385,7 +3413,7 @@
           (reference "H2") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "H2") (unit 1)
         )
@@ -3416,7 +3444,7 @@
     (pin "1" (uuid dcc9d09d-7f60-40c6-898c-a0bf9157f259))
     (pin "2" (uuid ced93aa2-d42a-48b7-a8f7-6c1103b30c6e))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "R9") (unit 1)
         )
@@ -3447,7 +3475,7 @@
           (reference "R2") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "R4") (unit 1)
         )
@@ -3477,7 +3505,7 @@
           (reference "#PWR07") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR013") (unit 1)
         )
@@ -3507,7 +3535,7 @@
           (reference "#PWR09") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR012") (unit 1)
         )
@@ -3532,7 +3560,7 @@
     )
     (pin "1" (uuid 437fcb9d-0c95-48ff-a269-d43d96b9d376))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR034") (unit 1)
         )
@@ -3562,7 +3590,7 @@
           (reference "#PWR028") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR020") (unit 1)
         )
@@ -3588,7 +3616,7 @@
     (pin "1" (uuid 3b68b295-b378-448c-be02-269157de856f))
     (pin "2" (uuid c8269356-0928-41b4-b84c-ea8a41ffdd6f))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "R10") (unit 1)
         )
@@ -3619,7 +3647,7 @@
           (reference "D2") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "D4") (unit 1)
         )
@@ -3645,7 +3673,7 @@
     (pin "1" (uuid 5d784ddc-7668-451d-862a-d561b455a16b))
     (pin "2" (uuid 9f52529e-dbdd-4712-9aeb-8f3bd6c3e55e))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "SW4") (unit 1)
         )
@@ -3675,7 +3703,7 @@
           (reference "#PWR01") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR017") (unit 1)
         )
@@ -3706,7 +3734,7 @@
           (reference "R1") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "R2") (unit 1)
         )
@@ -3732,7 +3760,7 @@
     (pin "1" (uuid 0077d6fd-bcac-447e-aa5a-f77d8ddab065))
     (pin "2" (uuid 0ea3d3ea-3d66-4a15-8afc-d2358cda45d3))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "D6") (unit 1)
         )
@@ -3757,7 +3785,7 @@
     )
     (pin "1" (uuid 5b77f6fe-1305-4296-9098-68afbea7ffbd))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR036") (unit 1)
         )
@@ -3782,7 +3810,7 @@
     )
     (pin "1" (uuid fc7a4469-608a-4be2-aabc-54b8d5bde5f9))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR037") (unit 1)
         )
@@ -3812,7 +3840,7 @@
           (reference "#PWR015") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR023") (unit 1)
         )
@@ -3838,7 +3866,7 @@
     (pin "1" (uuid c87079d0-838f-4258-a58d-d10c4bb1a43d))
     (pin "2" (uuid 02ee1681-e7b3-4cc5-97f0-e656f03b1f7b))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "SW3") (unit 1)
         )
@@ -3868,7 +3896,7 @@
           (reference "#PWR016") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR019") (unit 1)
         )
@@ -3898,7 +3926,7 @@
           (reference "#PWR026") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR03") (unit 1)
         )
@@ -3925,7 +3953,7 @@
     (pin "2" (uuid cc1e5ad4-bf4e-4b95-b380-0b6eb08c0283))
     (pin "3" (uuid eeaace47-6f7c-4d40-abf0-48f7caf91280))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "SW8") (unit 1)
         )
@@ -3955,7 +3983,7 @@
           (reference "#PWR027") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR026") (unit 1)
         )
@@ -3985,7 +4013,7 @@
           (reference "#PWR028") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR015") (unit 1)
         )
@@ -4015,7 +4043,7 @@
           (reference "#PWR028") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR05") (unit 1)
         )
@@ -4023,19 +4051,45 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 127 22.86 0) (unit 1)
+  (symbol (lib_id "Device:R") (at 132.0273 66.0559 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid b666f595-d529-4cc2-b4a2-e1e085428369)
-    (property "Reference" "#PWR027" (at 127 29.21 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 127 27.94 0)
+    (uuid b5807a18-ea3f-4e7f-bd42-fbf53ddbd359)
+    (property "Reference" "R19" (at 132.0273 60.9759 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 127 22.86 0)
+    (property "Value" "10k" (at 132.0273 63.5159 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" (at 132.0273 64.2779 90)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 127 22.86 0)
+    (property "Datasheet" "~" (at 132.0273 66.0559 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 7f60aa45-61bb-4fd0-9f59-1346aeb2a9ed))
+    (pin "2" (uuid 5873d087-3de1-4915-8403-5f0bf926fbe5))
+    (instances
+      (project "controllerv6"
+        (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
+          (reference "R19") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GND") (at 132.08 25.4 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid b666f595-d529-4cc2-b4a2-e1e085428369)
+    (property "Reference" "#PWR027" (at 132.08 31.75 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 132.08 30.48 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 132.08 25.4 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 132.08 25.4 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid a6306b17-2c7d-48ea-98e6-42751ec3c2df))
@@ -4045,7 +4099,7 @@
           (reference "#PWR027") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR031") (unit 1)
         )
@@ -4075,9 +4129,36 @@
           (reference "#PWR024") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR028") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "s-ken:TOGGLE") (at 241.3 187.96 270) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid c4831551-04c2-4091-90ef-f06fcc8eceb7)
+    (property "Reference" "SW11" (at 241.3 176.53 90)
+      (effects (font (size 1.778 1.5113)))
+    )
+    (property "Value" "TOGGLE" (at 241.3 179.07 90)
+      (effects (font (size 1.778 1.5113)))
+    )
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" (at 241.3 187.96 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 241.3 187.96 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 98489697-6009-472d-a6cf-1dc5d43c9177))
+    (pin "2" (uuid a428e0bb-2b69-4e38-ac26-53360329b323))
+    (pin "3" (uuid f3bdce9d-6c06-4436-ab55-551acc99f73a))
+    (instances
+      (project "controllerv6"
+        (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
+          (reference "SW11") (unit 1)
         )
       )
     )
@@ -4100,7 +4181,7 @@
     )
     (pin "1" (uuid 34d374bc-ade7-444a-a87f-66e8762693c4))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR042") (unit 1)
         )
@@ -4131,7 +4212,7 @@
           (reference "C5") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "C1") (unit 1)
         )
@@ -4161,7 +4242,7 @@
           (reference "#PWR05") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR010") (unit 1)
         )
@@ -4187,7 +4268,7 @@
     (pin "1" (uuid fe65e9ec-db03-4ae0-bf53-4741e0442f97))
     (pin "2" (uuid 9508d187-8891-4df3-a52f-d8935e27fa45))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "D8") (unit 1)
         )
@@ -4218,7 +4299,7 @@
           (reference "D1") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "D3") (unit 1)
         )
@@ -4249,7 +4330,7 @@
           (reference "R1") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "R3") (unit 1)
         )
@@ -4279,7 +4360,7 @@
           (reference "#PWR029") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR06") (unit 1)
         )
@@ -4309,7 +4390,7 @@
           (reference "#PWR029") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR016") (unit 1)
         )
@@ -4334,7 +4415,7 @@
     )
     (pin "1" (uuid 606c566f-2d7a-4a99-82b9-92a2e67bb67d))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR041") (unit 1)
         )
@@ -4359,7 +4440,7 @@
     )
     (pin "1" (uuid 44596f3f-5d21-412d-bc95-677f8aa5f009))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR039") (unit 1)
         )
@@ -4384,7 +4465,7 @@
     )
     (pin "1" (uuid 915d1ddb-63d0-4d58-8d3f-24f749d69028))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR033") (unit 1)
         )
@@ -4410,7 +4491,7 @@
     (pin "1" (uuid 2ec3e181-53cb-4fe3-9122-25bdf5d4465f))
     (pin "2" (uuid 757a59de-ae9a-4693-8ed3-c19544d2915e))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "D5") (unit 1)
         )
@@ -4436,7 +4517,7 @@
     (pin "1" (uuid 8c1358e3-765c-41c1-8f8a-6e7f464b81e2))
     (pin "2" (uuid 0ae33a9b-c4c7-4b0b-85e9-9d75ad30d0b2))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "SW2") (unit 1)
         )
@@ -4461,7 +4542,7 @@
     )
     (pin "1" (uuid 578f436b-e073-4253-b5a2-befcf0ac40ef))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR032") (unit 1)
         )
@@ -4469,19 +4550,19 @@
     )
   )
 
-  (symbol (lib_id "power:+BATT") (at 127 20.32 0) (unit 1)
+  (symbol (lib_id "power:+BATT") (at 132.08 22.86 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f38529bd-fefc-4727-bef9-1ddc5c7461ed)
-    (property "Reference" "#PWR026" (at 127 24.13 0)
+    (property "Reference" "#PWR026" (at 132.08 26.67 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "+BATT" (at 127 16.51 0)
+    (property "Value" "+BATT" (at 132.08 19.05 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 127 20.32 0)
+    (property "Footprint" "" (at 132.08 22.86 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 127 20.32 0)
+    (property "Datasheet" "" (at 132.08 22.86 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 26fa0354-d980-448a-ae00-2812cf1151c3))
@@ -4491,7 +4572,7 @@
           (reference "#PWR026") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "#PWR030") (unit 1)
         )
@@ -4505,10 +4586,10 @@
     (property "Reference" "C2" (at 34.29 182.245 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "0.1μ" (at 34.29 184.785 0)
+    (property "Value" "10μ" (at 34.29 184.785 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm" (at 31.4452 186.69 0)
+    (property "Footprint" "Capacitor_THT:CP_Radial_Tantal_D6.0mm_P2.50mm" (at 31.4452 186.69 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 30.48 182.88 0)
@@ -4522,7 +4603,7 @@
           (reference "C2") (unit 1)
         )
       )
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "C2") (unit 1)
         )
@@ -4548,7 +4629,7 @@
     (pin "1" (uuid 95cac99a-220e-45d6-8bb3-55a2caaa5ece))
     (pin "2" (uuid e7be49fb-e285-4e5a-b4eb-062ab19ef673))
     (instances
-      (project "controller"
+      (project "controllerv6"
         (path "/4054b66d-d01d-402b-a309-54e4bbaf7a93"
           (reference "SW7") (unit 1)
         )
