@@ -13,6 +13,7 @@
 #include "stm32f4xx_nucleo.h"
 #include "sken_library/include.h"
 #include "sken_library/OTOS.h"
+#include "math.h"
 
 ConvertIntFloat convert;
 
@@ -25,7 +26,11 @@ uint8_t robot_state[3], STMdata[42];
 
 OTOS mous;
 uint8_t mous_data[36];
-float MousData[9] = {0,0,0,0,0,0,0,0,0};
+float coefficient[9] = {0.0003,0.0003,0.0055,0.00015,0.00015,0.061,0.0048,0.0048,5.5};
+float MousData[18];
+float past_mous[9];
+float x_pos,y_pos,Deg;
+int16_t x_bit,y_bit,deg_bit;
 unsigned int check_sum;
 Gpio sw;
 
@@ -33,7 +38,7 @@ Encoder encoder[2];
 Encoder_data enc_data[2];
 float enc_deg;
 int16_t enc_deg_bit;
-float measu_param[2] = {30,800};
+float measu_param[2] = {55,817.5};
 
 Gpio limit[6];
 uint8_t limit_data;
@@ -77,33 +82,6 @@ void receive_set(){
 	robot_cmd[2] = ROSdata[19];
 }
 
-void start_set(){
-	//初期設定
-	switch(ROSdata[0]&0x0F){
-	case M1:
-		for(int i=0; i<3; i++) M1_gain[i] = ROSfdata[i];
-		mdd.tcp(M1_PID_GAIN_CONFIG,M1_gain,10,2000);
-		break;
-	case M2:
-		for(int i=0; i<3; i++) M2_gain[i] = ROSfdata[i];
-		mdd.tcp(M2_PID_GAIN_CONFIG,M2_gain,10,2000);
-		break;
-	case M3:
-		for(int i=0; i<3; i++) M3_gain[i] = ROSfdata[i];
-		mdd.tcp(M3_PID_GAIN_CONFIG,M3_gain,10,2000);
-		break;
-	case M4:
-		for(int i=0; i<3; i++) M4_gain[i] = ROSfdata[i];
-		mdd.tcp(M4_PID_GAIN_CONFIG,M4_gain,10,2000);
-		break;
-	case other:
-		diameter[0] = ROSfdata[0];
-		diameter[1] = ROSfdata[1];
-		for(int i=0; i<4; i++)	encoder_parm[i] = ROSfdata[2];
-		break;
-	}
-}
-
 void MDD_control(){
 	//足回り動作
 	if(ROSdata[0] == 0xA0){
@@ -112,7 +90,7 @@ void MDD_control(){
 		for(int i=0; i<3; i++) mecanum[i] = 0;
 	}
 	mdd.udp(MECANUM_MODE,mecanum);
-	if(ROSdata[13]&0x01) mdd.udp(PID_RESET_COMMAND,mode);
+	if(ROSdata[13]&0x01) mdd.tcp(PID_RESET_COMMAND,mode,10,1000);
 }
 
 void sensor_set(){
@@ -120,45 +98,53 @@ void sensor_set(){
 	encoder[1].interrupt(&enc_data[1]);
 	robot_state[0] = 0;
 	for(int i=0; i<6; i++) robot_state[0] |= (limit[i].read()?1:0)<<i;
-	enc_deg = (enc_data[0].distance-enc_data[1].distance)/(measu_param[1]/2.0) * (360.0/(2.0*PI));
+	enc_deg = (enc_data[0].distance-enc_data[1].distance)/(measu_param[1]) * (360.0/(2.0*PI));
 	enc_deg_bit = enc_deg/0.0055;
+}
+
+void mous_to_bit(){
+	int16_t bit;
+	for(int i=0; i<9; i++){
+		bit = MousData[i]/coefficient[i];
+		mous_data[i*2]   =  bit     & 0xFF;
+		mous_data[i*2+1] = (bit>>8) & 0xFF;
+	}
 }
 
 void make_STMdata(){
 	STMdata[0] = 0xA6;
-	for(int i=1; i<5; i++){
-		STMdata[i] = mous_data[i-1];
+	STMdata[1] = ROSdata[0];
+	for(int i=0; i<18; i++){
+		STMdata[i+2] = mous_data[i];
 	}
-	STMdata[5] =  enc_deg_bit     & 0xFF;
-	STMdata[6] = (enc_deg_bit>>8) & 0xFF;
-	STMdata[7] = ROSdata[0];
-	for(int i=8; i<11; i++){
-		STMdata[i] = robot_state[i-8];
+	/*
+	STMdata[6] = enc_deg_bit     & 0xFF;
+	STMdata[7] = (enc_deg_bit>>8) & 0xFF;
+	*/
+	for(int i=0; i<3; i++){
+		STMdata[i+20] = robot_state[i];
 	}
 	check_sum = 0;
-	for(int i=1;i<11;i++){
+	for(int i=1;i<23;i++){
 		check_sum += STMdata[i];
 	}
-	STMdata[11] = check_sum & 0xFF;
+	STMdata[23] = check_sum & 0xFF;
 }
 
 void interrupt(){
-	mous.raw_data(mous_data,3);
-	mous.get_odom(MousData,3);
+	//mous.raw_data(mous_data,3);
+	//get_OTOS();
+	mous.interrupt(MousData);
+	mous_to_bit();
 	receive_set();
 	MDD_control();
 	sensor_set();
 	make_STMdata();
-	start_set();
 }
 
 void send_ros(){
-	serial.write(STMdata,12);
+	serial.write(STMdata,24);
 	//MDD_control();
-}
-
-void OTOS_get(){
-	mous.set_odom(MousData[0],MousData[1],ROSfdata[3]);
 }
 
 int main(void){
@@ -180,8 +166,8 @@ int main(void){
 	limit[4].init(A8,INPUT_PULLUP);
 	limit[5].init(B15,INPUT_PULLUP);
 
-	//mdd.init(A9,A10,SERIAL1);
-	mdd.init(MDD_0,A12,A11,CAN_1);
+	mdd.init(A9,A10,SERIAL1);
+	//mdd.init(MDD_0,A12,A11,CAN_1);
 	mdd.tcp(MOTOR_COMMAND_MODE_SELECT,mode,10,2000);
 	mdd.tcp(M1_PID_GAIN_CONFIG,M1_gain,10,2000);
 	mdd.tcp(M2_PID_GAIN_CONFIG,M2_gain,10,2000);
@@ -195,7 +181,6 @@ int main(void){
 
 	sken_system.addTimerInterruptFunc(interrupt,0,1);
 	sken_system.addTimerInterruptFunc(send_ros,1,10);
-	sken_system.addTimerInterruptFunc(OTOS_get,2,100);
 	while(true){
 	}
 }

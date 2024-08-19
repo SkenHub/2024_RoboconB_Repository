@@ -16,15 +16,15 @@ class OTOS {
 	{0.0003,0.0003,0.0055,0.00015,0.00015,0.061,0.0048,0.0048,5.5};
 	uint8_t data_[2];
 	int16_t Data_;
-	float odom_[18];
+	float odom_[18],past_odom_[9],pos_x_,pos_y_;
+	float drift_error_,drift_deg_,deg_error_,now_deg_,past_deg_;
+	int interrupt_time_,count_=0;
 public:
 	OTOS();
-	void init(Pin scl,Pin sda,I2CSelect i2c,int drift_time = 5000);
+	void init(Pin scl,Pin sda,I2CSelect i2c,int interrupt_time = 1);
 	void get_odom(float* odom,int odom_num);
 	void set_odom(float x,float y,float deg);
-	void set_xpos(float x);
-	void set_ypos(float y);
-	void set_deg(float deg);
+	void interrupt(float* odom);
 	void offset_odom(float x,float y,float deg);
 	void raw_data(uint8_t* data,int odom_num);
 	void reset();

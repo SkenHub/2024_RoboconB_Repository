@@ -39,7 +39,7 @@ void serial_get(){
 	}
 }
 
-float pwm[3];
+float pwm[3],pid_pwm[3];
 void omni_control(){
 	float omega = velo[2] * PI /180.0;
 	target_rps[0] = (-velo[0] + robot_param[1] * omega) / (2 * PI * robot_param[0]);
@@ -51,11 +51,11 @@ void omni_control(){
 	//pwm[2] = (velo[0]/2 + velo[1]*sqrt(3)/2 +  velo[2]) / (2 * PI);
 
 	for(int i=0; i<3; i++){
-
+		pid_pwm[i] = pid[i].control(target_rps[i],encoder_data[i].rps,1);
 		if(target_rps[i] == 0){
 			pwm[i] = 0;
 		}else{
-			pwm[i] = pid[i].control(target_rps[i],encoder_data[i].rps,1);
+			pwm[i] = pid_pwm[i];
 		}
 
 		omni[i].write(pwm[i]);
@@ -93,9 +93,9 @@ int main(void){
 	encoder[2].init(B6,B7,TIMER4);
 	encoder[3].init(C6,C7,TIMER3);
 
-	pid[0].setGain(2,0,0,20);
-	pid[1].setGain(2,0,0,20);
-	pid[2].setGain(2,0,0,20);
+	pid[0].setGain(1.5,0,0.1,50);
+	pid[1].setGain(1.5,0,0.1,50);
+	pid[2].setGain(1.5,0,0.1,50);
 
 	sken_system.addTimerInterruptFunc(interrupt,0,1);
 
