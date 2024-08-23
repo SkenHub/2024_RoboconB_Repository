@@ -43,8 +43,6 @@ float measu_param[2] = {55,817.5};
 Gpio limit[6];
 uint8_t limit_data;
 
-uint8_t fst_byte;
-
 SkenMdd mdd;
 float mode[4] = {0,0,0,0};
 
@@ -56,18 +54,12 @@ float diameter[4] = {100,1200,0,0};
 float encoder_parm[4] = {8192,8192,8192,8192};
 float mecanum[4] = {0,0,0,0};
 
-enum InitCase{
-	M1=1,
-	M2,
-	M3,
-	M4,
-	other,
-};
+Uart mdd_serial;
+uint8_t tx_data[17];
 
 void receive_set(){
 	for(int i=0; i<20; i++){
-		fst_byte = rosdata[i]&0xA0;
-		if(fst_byte == 0xA0){
+		if(rosdata[i] == 0xA0){
 			for(int j=0; j<20; j++) ROSdata[j] = rosdata[(i+j)%20];
 			break;
 		}
@@ -84,6 +76,8 @@ void receive_set(){
 
 void MDD_control(){
 	//足回り動作
+	mdd_serial.write(ROSdata,17);
+	/*
 	if(ROSdata[0] == 0xA0){
 		for(int i=0; i<3; i++) mecanum[i] = ROSfdata[i];
 	}else{
@@ -91,6 +85,7 @@ void MDD_control(){
 	}
 	mdd.udp(MECANUM_MODE,mecanum);
 	if(ROSdata[13]&0x01) mdd.tcp(PID_RESET_COMMAND,mode,10,1000);
+	*/
 }
 
 void sensor_set(){
@@ -166,6 +161,7 @@ int main(void){
 	limit[4].init(A8,INPUT_PULLUP);
 	limit[5].init(B15,INPUT_PULLUP);
 
+	/*
 	mdd.init(A9,A10,SERIAL1);
 	//mdd.init(MDD_0,A12,A11,CAN_1);
 	mdd.tcp(MOTOR_COMMAND_MODE_SELECT,mode,10,2000);
@@ -176,6 +172,8 @@ int main(void){
 	mdd.tcp(ENCODER_RESOLUTION_CONFIG,encoder_parm,10,2000);
 	mdd.tcp(ROBOT_DIAMETER_CONFIG,diameter,10,2000);
 	mdd.tcp(MECANUM_MODE,mecanum,10,2000);
+	*/
+	mdd_serial.init(A9,A10,SERIAL1,115200);
 
 	mous.set_odom(0,0,0);
 

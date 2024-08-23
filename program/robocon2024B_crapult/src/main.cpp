@@ -27,8 +27,8 @@ struct RoboMas{
 }robomas;
 
 RcPwm servo[2];
-float servo1_param[4] = {0,0,15,1.0};
-float servo2_param[4] = {0,0,20,5.0};
+float servo1_param[4] = {10,10,40,1.0};
+float servo2_param[4] = {5,5,30,5.0};
 enum servo_param{
 	now,min,max,rate,
 };
@@ -52,9 +52,9 @@ void get_robomas_data(){
 int16_t robomas_send_data = 0;
 void send_robomas(){
 	if(/*ps4_data.Square*/(im920_data[0]&0x01) && robomas_send_data > -10000) robomas_send_data += -10;
-	if(/*ps4_data.Circle*/(im920_data[0]&0x08) && deg>50) robomas_send_data = 8000;
+	if(/*ps4_data.Circle*/(im920_data[0]&0x08) && deg>50) robomas_send_data = 10000;
 	if(!(/*ps4_data.Square*/(im920_data[0]&0x01) && deg < 200) && robomas_send_data < 0) robomas_send_data = 0;
-	if(!(/*ps4_data.Square*/(im920_data[0]&0x08) && deg >  50) && robomas_send_data > 0) robomas_send_data = 0;
+	if(!(/*ps4_data.Square*/(im920_data[0]&0x08) /*&& deg >  50*/) && robomas_send_data > 0) robomas_send_data = 0;
 	can_tx[0] = (robomas_send_data>>8)&0xFF;
 	can_tx[1] =  robomas_send_data    &0xFF;
 }
@@ -68,7 +68,8 @@ void servo_control(){
 	}
 
 	//if(ps4_data.Cross){
-	if(im920_data[0]&0x04){
+	//if(im920_data[0]&0x04){
+	if(deg>100){
 		servo2_param[now] += (servo2_param[max]>servo2_param[now])? servo2_param[rate]:0;
 	}else{
 		servo2_param[now] -= (servo2_param[min]<servo2_param[now])? servo2_param[rate]:0;
@@ -131,13 +132,15 @@ int main(void){
 	sken_system.startCanCommunicate(B13,B12,CAN_2);
 	sken_system.addCanRceiveInterruptFunc(CAN_2,&can_data);
 
-	servo[0].init(B6,TIMER4,CH1);
-	servo[1].init(B7,TIMER4,CH2);
+	//servo[0].init(B6,TIMER4,CH1);
+	//servo[1].init(B7,TIMER4,CH2);
+	servo[0].init(A9,TIMER1,CH2);
+	servo[1].init(A10,TIMER2,CH3);
 
 	sw.init(C13,INPUT_PULLUP);
 
-	mdd.init(A9,A10,SERIAL1,115200);
-	mdd.startDmaRead(deg_data,5);
+	//mdd.init(A9,A10,SERIAL1,115200);
+	//mdd.startDmaRead(deg_data,5);
 
 	sken_system.addTimerInterruptFunc(interrupt,0,1);
 
