@@ -24,6 +24,14 @@ class IM920(serial.Serial):
             super().write(self.tx_data)
         super().write(self.ENDCH)
     
+    def byte_write(self,data):
+        self.data = format(int.from_bytes(data,byteorder='big'),'x')
+        self.tx_data = bytes(self.data.zfill(len(data)*2),"utf-8")
+        #print(self.tx_data)
+        super().write(self.TXDA)
+        super().write(self.tx_data)
+        super().write(self.ENDCH)
+
     def row_read(self,size):
         return super().read(13+size*3-1)
 
@@ -64,8 +72,9 @@ if __name__ == "__main__":
     im920 = IM920("COM18")
     count = 0.5
     while True:
-        im920.write([count,count*(-1)])
+        #im920.write([count,count*(-1)])
+        im920.byte_write([1,0,0,0,0,0,0,0])
         count += 1.57
         #num,data = im920.read(8,float)
-        print(count)
-        time.sleep(0.5)
+        #print(count)
+        #time.sleep(0.5)
