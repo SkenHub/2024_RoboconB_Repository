@@ -27,8 +27,8 @@ constexpr byte Left_Motor_P2 = A5;
 void setup() {
   Serial.begin(115200);
   //Serial.println("Hello");
-  servo.attach(S1,510,2400);
-  servo2.attach(S2,510,2400);
+  servo.attach(S1);//,510,2400);
+  servo2.attach(S2);//,510,2400);
   im920.init();
   pinMode(Right_Motor_P1,OUTPUT);
   pinMode(Right_Motor_P2,OUTPUT);
@@ -37,29 +37,30 @@ void setup() {
 }
 
 void loop() {
+  
 //IM920との通信
   uint16_t NN;
   im920.read(&NN,rx_data,Bytes8);
   byte firstByte = rx_data[0];
-  //Serial.println(firstByte,HEX);
+  Serial.println(firstByte,HEX);
   
    R_Mtr=0;
   L_Mtr=0;
   if(firstByte&0x01){
-    R_Mtr += 200;
-    L_Mtr += 200;
+    R_Mtr -= 150;
+    L_Mtr -= 150;
   }
   if(firstByte&0x02){
-    R_Mtr -= 200;
-    L_Mtr -= 200;
+    R_Mtr += 150;
+    L_Mtr += 150;
   }
   if(firstByte&0x04){
-    R_Mtr -= 200;
-    L_Mtr += 200;
+    R_Mtr += 150;
+    L_Mtr -= 150;
   }
   if(firstByte&0x08){
-    R_Mtr += 200;
-    L_Mtr -= 200;
+    R_Mtr -= 150;
+    L_Mtr += 150;
   }
   if(firstByte&0x40){
     R_Mtr *= 1.25;
@@ -68,30 +69,38 @@ void loop() {
   if(firstByte&0x80){
     R_Mtr *= -1;
     L_Mtr *= -1;
-    servo_ht = 60.0;
+    servo_ht = 150.0;
     servo2.write(servo_ht);
   }
-  else if(firstByte&0x80){
-    servo_ht = 0.0;
+  else{
+    servo_ht = 90.0;
     servo2.write(servo_ht);
   }
-//  Serial.print(R_Mtr);
-//  Serial.print(" ");
-//  Serial.println(L_Mtr);
-  
-  analogWrite(Right_Motor_P1,(R_Mtr>0)?R_Mtr:0);
-  analogWrite(Right_Motor_P2,(R_Mtr<0)?-1*R_Mtr:0);
-  analogWrite(Left_Motor_P1,(L_Mtr>0)?L_Mtr:0);
-  analogWrite(Left_Motor_P2,(L_Mtr<0)?-1*L_Mtr:0);
+  //Serial.println(servo_ht);
+  //Serial.print(R_Mtr);
+  //Serial.print(" ");
+  //Serial.println(L_Mtr);
+  if(firstByte&0x0F){
+    analogWrite(Right_Motor_P1,(R_Mtr>0)?R_Mtr:0);
+    analogWrite(Right_Motor_P2,(R_Mtr<0)?-1*R_Mtr:0);
+    analogWrite(Left_Motor_P1,(L_Mtr>0)?L_Mtr:0);
+    analogWrite(Left_Motor_P2,(L_Mtr<0)?-1*L_Mtr:0);
+  }else{
+    digitalWrite(Right_Motor_P1,HIGH);
+    digitalWrite(Right_Motor_P2,HIGH);
+    digitalWrite(Left_Motor_P1,HIGH);
+    digitalWrite(Left_Motor_P2,HIGH);
+  }
   
   if(firstByte&0x10){//Lトリガー検知
     if(ServoDeg < ServoLimitDeg){
-      ServoDeg = ServoDeg + 0.1;}
+      ServoDeg += 0.1;}
   }
   if(firstByte&0x20){//Rトリガー検知
     if(ServoDeg > 0.00){
-      ServoDeg = ServoDeg - 0.1;}
+      ServoDeg -= 0.1;}
   } 
-  Serial.println(ServoDeg);
-  servo.write(int(ServoDeg));
+  //Serial.println(ServoDeg);
+  //Serial.println(servo_ht);
+  servo.write(ServoDeg);
 }

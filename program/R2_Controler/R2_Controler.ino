@@ -1,10 +1,9 @@
 #include <SoftwareSerial.h>
 #include "IM920.h"
 
-SoftwareSerial IM920Serial(8,9);  //受信 RX をピン 8、送信 TX をピン 9 に割り当て
+SoftwareSerial IM920Serial(22,23);  //受信 RX をピン 8、送信 TX をピン 9 に割り当て
 IM920 im920(IM920Serial);
 uint8_t tx_data[8] = {0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF};
-
 /*
 const int switch1 = 2;//PushなSWのピン番号
 const int switch2 = 3;
@@ -15,7 +14,9 @@ const int switch6 = 7;
 const int switch7 = 6;
 const int switch8 = 7;
 */
-const int sw[8] = {2,3,4,5,6,7,0,0};
+//const int sw[8] = {2,3,4,5,6,7,0,0};
+const int sw[11] = {35,26,33,25,17,18,5,19,34,32,16}; 
+
 /*
 byte switchState1 = 0;//押されているか否かを定義
 byte switchState2 = 0;
@@ -25,9 +26,10 @@ byte switchState5 = 0;
 byte switchState6 = 0;
 */
 uint8_t switchState = 0;
+uint8_t switchState2 = 0;
 
 void setup() {
-  for(int i=0; i<8; i++){
+  for(int i=0; i<11; i++){
     pinMode(sw[i],INPUT_PULLUP);//ピン定義
   }
   Serial.begin(19200);
@@ -36,14 +38,26 @@ void setup() {
 
 void loop() {
   switchState = 0;
+  switchState2 = 0;
   for(int i=0; i<8; i++) switchState |= ((digitalRead(sw[i]))? 0 : 1) << i;
+  for(int i=0; i<3; i++) switchState2 |= ((digitalRead(sw[i+8]))? 0 : 1) << i;
+  int kae = 0;
+  kae = digitalRead(sw[10]);
   tx_data[0] = switchState;
-  for(int i=0; i<8; i++){
+  tx_data[1] = switchState2;
+  //Serial.println(sw[5]);
+  if(kae == 0){
+    im920.write(tx_data,Bytes8,0002);}
+  else{
+    im920.write(tx_data,Bytes8,0003);}
+
+  for(int i=0; i<11; i++){
     Serial.print(tx_data[i],HEX);
+    //Serial.print(kae);
     Serial.print(" ");
   }
+  //Serial.println(kae);
   Serial.println();
-  im920.write(tx_data,Bytes8);
 /*
 byte send_data = 0b00000000;
 
