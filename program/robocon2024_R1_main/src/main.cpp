@@ -27,9 +27,9 @@ uint8_t robot_state[3], STMdata[42];
 OTOS mous;
 uint8_t mous_data[36];
 float coefficient[9] = {0.0003,0.0003,0.0055,0.00015,0.00015,0.061,0.0048,0.0048,5.5};
-float MousData[18];
+float MousData[9];
 float past_mous[9];
-float x_pos,y_pos,Deg;
+float OdomData[9];
 int16_t x_bit,y_bit,deg_bit;
 unsigned int check_sum;
 Gpio sw;
@@ -42,17 +42,6 @@ float measu_param[2] = {55,817.5};
 
 Gpio limit[6];
 uint8_t limit_data;
-
-SkenMdd mdd;
-float mode[4] = {0,0,0,0};
-
-float M1_gain[4] = {20,1,0.1,20};
-float M2_gain[4] = {20,1,0.1,20};
-float M3_gain[4] = {20,1,0.1,20};
-float M4_gain[4] = {20,1,0.1,20};
-float diameter[4] = {100,1200,0,0};
-float encoder_parm[4] = {8192,8192,8192,8192};
-float mecanum[4] = {0,0,0,0};
 
 Uart mdd_serial;
 uint8_t tx_data[17];
@@ -75,17 +64,8 @@ void receive_set(){
 }
 
 void MDD_control(){
-	//足回り動作
-	mdd_serial.write(ROSdata,17);
-	/*
-	if(ROSdata[0] == 0xA0){
-		for(int i=0; i<3; i++) mecanum[i] = ROSfdata[i];
-	}else{
-		for(int i=0; i<3; i++) mecanum[i] = 0;
-	}
-	mdd.udp(MECANUM_MODE,mecanum);
-	if(ROSdata[13]&0x01) mdd.tcp(PID_RESET_COMMAND,mode,10,1000);
-	*/
+	ROSdata[17] &= ~((robot_state[0]>>4)&0b11);
+	mdd_serial.write(ROSdata,18);
 }
 
 void sensor_set(){
@@ -97,15 +77,6 @@ void sensor_set(){
 	enc_deg_bit = enc_deg/0.0055;
 }
 
-void mous_to_bit(){
-	int16_t bit;
-	for(int i=0; i<9; i++){
-		bit = MousData[i]/coefficient[i];
-		mous_data[i*2]   =  bit     & 0xFF;
-		mous_data[i*2+1] = (bit>>8) & 0xFF;
-	}
-}
-
 void make_STMdata(){
 	STMdata[0] = 0xA6;
 	STMdata[1] = ROSdata[0];
@@ -113,7 +84,7 @@ void make_STMdata(){
 		STMdata[i+2] = mous_data[i];
 	}
 	/*
-	STMdata[6] = enc_deg_bit     & 0xFF;
+	STMdata[6] =  enc_deg_bit     & 0xFF;
 	STMdata[7] = (enc_deg_bit>>8) & 0xFF;
 	*/
 	for(int i=0; i<3; i++){
@@ -127,10 +98,7 @@ void make_STMdata(){
 }
 
 void interrupt(){
-	//mous.raw_data(mous_data,3);
-	//get_OTOS();
-	mous.interrupt(MousData);
-	mous_to_bit();
+	mous.raw_data(mous_data,9);
 	receive_set();
 	MDD_control();
 	sensor_set();
@@ -161,24 +129,12 @@ int main(void){
 	limit[4].init(A8,INPUT_PULLUP);
 	limit[5].init(B15,INPUT_PULLUP);
 
-	/*
-	mdd.init(A9,A10,SERIAL1);
-	//mdd.init(MDD_0,A12,A11,CAN_1);
-	mdd.tcp(MOTOR_COMMAND_MODE_SELECT,mode,10,2000);
-	mdd.tcp(M1_PID_GAIN_CONFIG,M1_gain,10,2000);
-	mdd.tcp(M2_PID_GAIN_CONFIG,M2_gain,10,2000);
-	mdd.tcp(M3_PID_GAIN_CONFIG,M3_gain,10,2000);
-	mdd.tcp(M4_PID_GAIN_CONFIG,M4_gain,10,2000);
-	mdd.tcp(ENCODER_RESOLUTION_CONFIG,encoder_parm,10,2000);
-	mdd.tcp(ROBOT_DIAMETER_CONFIG,diameter,10,2000);
-	mdd.tcp(MECANUM_MODE,mecanum,10,2000);
-	*/
 	mdd_serial.init(A9,A10,SERIAL1,115200);
 
 	mous.set_odom(0,0,0);
 
 	sken_system.addTimerInterruptFunc(interrupt,0,1);
-	sken_system.addTimerInterruptFunc(send_ros,1,10);
+	sken_system.addTimerInterruptFunc(send_ros,1,1);
 	while(true){
 	}
 }
