@@ -19,9 +19,9 @@ uint8_t serial_data;
 Motor mtr;
 
 void interrupt(){
-	if(serial_data&0x01){
+	if(serial_data&0x01 && !serial_data&0b1100){
 		mtr.write(-30);
-	}else if(serial_data&0x02){
+	}else if(serial_data&0x02 && !serial_data&0b1100){
 		mtr.write(30);
 	}else{
 		mtr.write(0);
