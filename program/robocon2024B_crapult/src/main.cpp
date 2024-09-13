@@ -34,8 +34,8 @@ ConvertIntFloat convert;
 Gpio sw;
 
 void servo_control(){
-	//if(ps4_data.R1){
-	if(im920_data[0]&0x02){
+	if(ps4_data.R1){
+	//if(im920_data[0]&0x02){
 		servo1_param[now] += (servo1_param[max]>servo1_param[now])? servo1_param[rate]:0;
 	}else{
 		servo1_param[now] -= (servo1_param[min]<servo1_param[now])? servo1_param[rate]:0;
@@ -44,17 +44,18 @@ void servo_control(){
 }
 
 void omni_set(){
-	/*
+
 	omni[0] = ps4_data.LxPad/127.0 * 1000;
 	omni[1] = ps4_data.LyPad/127.0 * 1000;
 	omni[2] = ps4_data.RxPad/127.0 * -150;
-	*/
+	/*
 	omni[0]  = (im920_data[1]&0x01)? 1000 : 0;
 	omni[0] -= (im920_data[1]&0x02)? 1000 : 0;
 	omni[1]  = (im920_data[1]&0x04)? 1000 : 0;
 	omni[1] -= (im920_data[1]&0x08)? 1000 : 0;
 	omni[2]  = (im920_data[1]&0x10)? -150 : 0;
 	omni[2] -= (im920_data[1]&0x20)? -150 : 0;
+	*/
 }
 
 void send_write(){
@@ -63,7 +64,9 @@ void send_write(){
 		convert.float_val = omni[i];
 		for(int j=0; j<4; j++) send_data[i*4+j+1] = convert.uint8_val[j];
 	}
-	send_data[13] = ((im920_data[0]>>2)&0x02) | (im920_data[0]&0x01);
+
+	send_data[13] = ps4_data.Cross<<1 | ps4_data.Square;
+	//send_data[13] = ((im920_data[0]>>2)&0x02) | (im920_data[0]&0x01);
 }
 
 void interrupt(){
@@ -77,8 +80,8 @@ void interrupt(){
 int main(void){
 	sken_system.init();
 
-	//ps4.StartRecive(C10,C11,SERIAL3);
-	im920.init(C10,C11,SERIAL3);
+	ps4.StartRecive(C10,C11,SERIAL3);
+	//im920.init(C10,C11,SERIAL3);
 
 	servo.init(B6,TIMER4,CH1);
 
