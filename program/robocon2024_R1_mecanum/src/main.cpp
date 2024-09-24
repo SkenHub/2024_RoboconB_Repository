@@ -26,13 +26,15 @@ float target_mecanum[4];
 float out[4];
 
 Uart serial;
-uint8_t rx_data[17],get_data[16];
+uint8_t rx_data[18],get_data[17];
 ConvertIntFloat convert;
 
+Uart mechan_serial;
+
 void get_target(){
-	for(int i=0; i<17; i++){
+	for(int i=0; i<18; i++){
 		if(rx_data[i] == 0xA0){
-			for(int j=0; j<16; j++) get_data[j] = rx_data[(i+1+j)%17];
+			for(int j=0; j<17; j++) get_data[j] = rx_data[(i+1+j)%18];
 			break;
 		}
 	}
@@ -48,9 +50,9 @@ void get_target(){
 }
 
 void caluc_mecanum_velo(){
-	robot_velo[0] = target_velo[0]*cos(robot_rad) - target_velo[1]*sin(robot_rad);
-	robot_velo[1] = target_velo[0]*sin(robot_rad) + target_velo[1]*cos(robot_rad);
-	robot_velo[2] = target_velo[2]*(2*PI/360.0);
+	robot_velo[0] =  target_velo[0]*cos(robot_rad) + target_velo[1]*sin(robot_rad);
+	robot_velo[1] = -target_velo[0]*sin(robot_rad) + target_velo[1]*cos(robot_rad);
+	robot_velo[2] =  target_velo[2]*(2*PI/360.0);
 
 	target_mecanum[0] = (-robot_velo[0] + robot_velo[1] + (x_side+y_side)*robot_velo[2])/(wheel_diameter*PI);
 	target_mecanum[1] = ( robot_velo[0] + robot_velo[1] - (x_side+y_side)*robot_velo[2])/(wheel_diameter*PI);
@@ -79,25 +81,27 @@ int main(void){
 	serial.init(C10,C11,SERIAL4,115200);
 	mecanum[0].init(Apin,B15,TIMER12 ,CH2);
 	mecanum[0].init(Bpin,B14,TIMER12 ,CH1);
-	mecanum[1].init(Apin,A11,TIMER1 ,CH4);
-	mecanum[1].init(Bpin,A8 ,TIMER1 ,CH1);
-	mecanum[2].init(Apin,A7 ,TIMER14,CH1);
-	mecanum[2].init(Bpin,A6 ,TIMER13,CH1);
+	mecanum[1].init(Apin,A8 ,TIMER1 ,CH1);
+	mecanum[1].init(Bpin,A11,TIMER1 ,CH4);
+	mecanum[2].init(Apin,A6 ,TIMER13,CH1);
+	mecanum[2].init(Bpin,A7 ,TIMER14,CH1);
 	mecanum[3].init(Apin,B9 ,TIMER11,CH1);
 	mecanum[3].init(Bpin,B8 ,TIMER10,CH1);
 	encoder[0].init(A0,A1,TIMER5,wheel_diameter);
 	encoder[1].init(A5,B3,TIMER2,wheel_diameter);
 	encoder[2].init(B6,B7,TIMER4,wheel_diameter);
 	encoder[3].init(C6,C7,TIMER3,wheel_diameter);
-	pid[0].setGain(10,1,0.1,20);
-	pid[1].setGain(10,1,0.1,20);
-	pid[2].setGain(10,1,0.1,20);
-	pid[3].setGain(10,1,0.1,20);
+	pid[0].setGain(30,20,0.1,20);
+	pid[1].setGain(30,20,0.1,20);
+	pid[2].setGain(30,20,0.1,20);
+	pid[3].setGain(30,20,0.1,20);
+
+	mechan_serial.init(A9,A10,SERIAL1,115200);
 
 	sken_system.addTimerInterruptFunc(interrupt,0,1);
-	serial.startDmaRead(rx_data,17);
+	serial.startDmaRead(rx_data,18);
 
 	while(true){
-
+		mechan_serial.write(&get_data[16],1);
 	}
 }
