@@ -33,14 +33,14 @@ void loop() {
   tx_data[0] = switchState;
   tx_data[1] = switchState2;
   //Serial.println(sw[5]);
-  /*
+  
   if(kae == 0){
-    im920.write(tx_data,Bytes8,0001);
+    im920.write(tx_data,Bytes8,0002);
   }else{
     im920.write(tx_data,Bytes8,0003);
   }
-  */
-  im920.write(tx_data,Bytes8);
+  
+  //im920.write(tx_data,Bytes8,0002);
 
   for(int i=0; i<11; i++){
     Serial.print(tx_data[i],HEX);

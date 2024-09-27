@@ -67,11 +67,11 @@ void loop() {
    L_Mtr *= -1; 
   } 
   if(firstByte&0x80){
-    servo_ht = 0.00;
+    servo_ht = 180.00;
     servo2.write(servo_ht);
   }
   else{
-    servo_ht = 180.00;
+    servo_ht = 150.00;
     servo2.write(servo_ht);
   }
   //Serial.println(servo_ht);
@@ -93,7 +93,7 @@ void loop() {
   if(firstByte&0x10){//Lトリガー検知
     /*if(ServoDeg < ServoLimitDeg){
       ServoDeg += 0.1;}*/
-    ServoDeg = 180.00;
+    ServoDeg = 150.00;
   }
   else{
     ServoDeg = 0.00;
