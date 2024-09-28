@@ -24,6 +24,8 @@ constexpr byte Right_Motor_P2 = A1;
 constexpr byte Left_Motor_P1 = A4;
 constexpr byte Left_Motor_P2 = A5;
 
+int tenkai = 0;
+
 void setup() {
   Serial.begin(115200);
   //Serial.println("Hello");
@@ -94,11 +96,15 @@ void loop() {
     /*if(ServoDeg < ServoLimitDeg){
       ServoDeg += 0.1;}*/
     ServoDeg = 150.00;
+    tenkai = 1;
+  }
+  else if(tenkai == 1){
+    ServoDeg = 100.00;
   }
   else{
     ServoDeg = 0.00;
   }
-  /*if(firstByte&0x20){//Rトリガー検知
+  /*if(firstByte&0x20){
     if(ServoDeg > 0.00){
       ServoDeg -= 0.1;}
   } */
