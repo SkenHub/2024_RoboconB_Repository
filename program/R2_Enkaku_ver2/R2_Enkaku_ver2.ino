@@ -12,7 +12,7 @@ uint8_t rx_data[8] = {0,0,0,0,0,0,0,0};
 constexpr byte S1 = 6;//Servo1のピン番号を記入
 constexpr byte S2 = 5;
 float ServoDeg;// = 180.00;//Servo角度制御用変数の初期化
-float servo_ht = 60.00;
+float servo_ht;// = 60.00;
 float ServoLimitDeg = 180.00;//Servo最大角
 Servo servo;
 Servo servo2;
@@ -68,14 +68,14 @@ void loop() {
     R_Mtr *= -1;
    L_Mtr *= -1; 
   } 
-  if(firstByte&0x80){
+  /*if(firstByte&0x80){
     servo_ht = 180.00;
     servo2.write(servo_ht);
   }
   else{
     servo_ht = 150.00;
     servo2.write(servo_ht);
-  }
+  }*/
   //Serial.println(servo_ht);
   //Serial.print(R_Mtr);
   //Serial.print(" ");
@@ -96,13 +96,16 @@ void loop() {
     /*if(ServoDeg < ServoLimitDeg){
       ServoDeg += 0.1;}*/
     ServoDeg = 160.00;
+    servo_ht = 160.00;
     tenkai = 1;
   }
   else if(tenkai == 1){
     ServoDeg = 120.00;
+    servo_ht = 120.00;
   }
   else{
     ServoDeg = 0.00;
+    servo_ht = 0.00;
   }
   /*if(firstByte&0x20){
     if(ServoDeg > 0.00){
@@ -111,4 +114,5 @@ void loop() {
   //Serial.println(ServoDeg);
   //Serial.println(servo_ht);
   servo.write(ServoDeg);
+  servo.write(servo_ht);
 }
